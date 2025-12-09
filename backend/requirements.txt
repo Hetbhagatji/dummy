@@ -1,0 +1,12 @@
+numpy
+pandas
+docling
+groq
+python-multipart
+fastapi
+uvicorn
+pydantic
+typing
+langchain
+langchain-community
+python-dotenv
