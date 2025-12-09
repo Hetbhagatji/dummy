@@ -10,3 +10,5 @@ typing
 langchain
 langchain-community
 python-dotenv
+ollama
+requests
