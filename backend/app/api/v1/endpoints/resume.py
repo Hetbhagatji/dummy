@@ -1,8 +1,11 @@
 from fastapi import APIRouter,UploadFile,File
 from app.services.resume_service import ResumeService
+from app.llm_models.grok_llm import GroqLLM
+
 router = APIRouter()
 
-resume_service=ResumeService()
+llm_instance=GroqLLM()
+resume_service=ResumeService(llm=llm_instance)
 
 
 @router.post("/extract-text")
