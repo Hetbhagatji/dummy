@@ -1,6 +1,7 @@
 from fastapi import APIRouter,UploadFile,File
 from app.services.resume_service import ResumeService
 from app.llm_models.grok_llm import GroqLLM
+from app.llm_models.ollama_lllm import OllamaLLM
 
 router = APIRouter()
 
@@ -18,9 +19,9 @@ async def extract_text(file: UploadFile = File(...)):
 def parse_resume(file: UploadFile = File(...)):
     return resume_service.parse_resume(file)
 
-# @router.post("/parse")
-# def parse(resume_text:str):
-#     return resume_service.parse(resume_text=resume_text)
+@router.post("/parse")
+def parse(resume_text:str):
+    return resume_service.parse(resume_text=resume_text)
 
 
     

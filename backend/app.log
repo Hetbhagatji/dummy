@@ -1,0 +1,10 @@
+2025-12-10 09:11:20,257 - resume_parser - INFO - Resume parsing started for file: pharma_resume.pdf
+2025-12-10 09:11:20,264 - resume_parser - INFO - File saved at: app/output/uploads\pharma_resume.pdf
+2025-12-10 09:12:58,190 - resume_parser - INFO - Text extracted successfully from PDF
+2025-12-10 09:12:58,218 - resume_parser - INFO - Prompt created for LLM
+2025-12-10 09:12:59,445 - resume_parser - INFO - LLM response received
+2025-12-10 09:12:59,446 - resume_parser - INFO - LLM response parsed into JSON
+2025-12-10 15:24:27,223 - resume_parser - INFO - Job parsing started
+2025-12-10 15:24:27,247 - resume_parser - INFO - Job prompt created
+2025-12-10 15:24:29,771 - resume_parser - INFO - LLM response received
+2025-12-10 15:24:29,771 - resume_parser - INFO - Job JSON parsed successfully

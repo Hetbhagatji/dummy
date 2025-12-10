@@ -4,7 +4,7 @@ from app.schemas.education_schema import Education
 from app.schemas.experience_schema import Experience
 
 class Resume(BaseModel):
-    name: str = Field(
+    name: Optional[str] = Field(
         ..., description="Full name of the person"
     )
     email: Optional[str] = Field(
