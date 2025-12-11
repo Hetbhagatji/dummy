@@ -19,3 +19,15 @@ class Resume(BaseModel):
     education: Optional[List[Education]] = Field(
         None, description="List of educational qualifications"
     )
+    skills: Optional[List[str]] = Field(
+        None,description="List of skills"
+    )
+    summary: Optional[str] = Field(
+        None,description="This is the summary of resume"
+    )
+    location: Optional[str]= Field(
+        None,description="This is the location of candidate"
+    )
+    achivements:Optional[List[str]]=Field(
+        None,description="List of achivements"
+    )
