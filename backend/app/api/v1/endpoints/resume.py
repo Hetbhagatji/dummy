@@ -2,10 +2,14 @@ from fastapi import APIRouter,UploadFile,File
 from app.services.resume_service import ResumeService
 from app.llm_models.grok_llm import GroqLLM
 from app.llm_models.ollama_lllm import OllamaLLM
-
+import yaml
+from app.llm_models.llm_factory import get_llm
 router = APIRouter()
 
-llm_instance=GroqLLM()
+with open(r"C:\Users\hetbh\OneDrive\Desktop\resume-parser\backend\app\config\llm_config.yml") as f:
+    config = yaml.safe_load(f)
+
+llm_instance=get_llm(config["llm_model"])
 resume_service=ResumeService(llm=llm_instance)
 
 
@@ -22,8 +26,3 @@ def parse_resume(file: UploadFile = File(...)):
 @router.post("/parse")
 def parse(resume_text:str):
     return resume_service.parse(resume_text=resume_text)
-
-
-    
-
-
