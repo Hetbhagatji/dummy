@@ -16,3 +16,4 @@ sentence-transformers
 torch
 numpy
 scikit-learn
+python-json-logger

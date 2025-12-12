@@ -1,62 +1,104 @@
-from fastapi import UploadFile,File
+from fastapi import UploadFile
 from app.utils.file_utils import save_upload_file
 from app.services.docling_service import extract_text_from_pdf
 from app.prompts.parser_prompt import get_resume_prompt
-from  app.schemas.resume_schema import Resume
-from app.llm_models.groq_client import call_llm
-from app.llm_models.grok_llm import GroqLLM
+from app.schemas.resume_schema import Resume
 import json
-from app.logger import logger
+from app.config.logger import get_logger
+
+# Initialize logger
+logger = get_logger("ResumeService")
+
 
 class ResumeService:
-    
-    def __init__(self,llm):
-        self.llm=llm
-    
-    def extract_text(self,file: UploadFile) -> dict:
-        UPLOAD_DIR = "app/output/uploads"
-        file_path = save_upload_file(file, UPLOAD_DIR)
-        text = extract_text_from_pdf(file_path)
+    def __init__(self, llm):
+        self.llm = llm
 
-        return text
-        
-    def parse_resume(self, file: UploadFile) -> dict:
+    # -------------------------------
+    # EXTRACT TEXT FROM PDF
+    # -------------------------------
+    def extract_text(self, file: UploadFile) -> str:
         try:
-            logger.info(f"Resume parsing started for file: {file.filename}")
+            logger.info({"event": "extract_text_start", "file_name": file.filename})
 
             UPLOAD_DIR = "app/output/uploads"
             file_path = save_upload_file(file, UPLOAD_DIR)
-            logger.info(f"File saved at: {file_path}")
+            logger.info({"event": "file_saved", "file_path": file_path})
+
+            text = extract_text_from_pdf(file_path)
+            logger.info({"event": "text_extraction_complete", "file_name": file.filename})
+
+            return text
+
+        except Exception as e:
+            logger.error({"event": "extract_text_error", "error": str(e), "file_name": file.filename})
+            raise
+
+    # -------------------------------
+    # PARSE RESUME FROM FILE
+    # -------------------------------
+    def parse_resume(self, file: UploadFile) -> Resume:
+        try:
+            logger.info({"event": "parse_resume_start", "file_name": file.filename})
+
+            UPLOAD_DIR = "app/output/uploads"
+            file_path = save_upload_file(file, UPLOAD_DIR)
+            logger.info({"event": "file_saved", "file_path": file_path})
 
             resume_text = extract_text_from_pdf(file_path)
-            logger.info("Text extracted successfully from PDF")
+            logger.info({"event": "pdf_text_extracted", "file_name": file.filename})
 
             prompt = get_resume_prompt(resume_text)
-            logger.info("Prompt created for LLM")
+            logger.info({"event": "prompt_created", "file_name": file.filename})
 
             llm_response = self.llm.parse(prompt)
-            logger.info("LLM response received")
+            logger.info({"event": "llm_response_received", "file_name": file.filename})
 
             data = json.loads(llm_response)
-            logger.info("LLM response parsed into JSON")
+            logger.info({"event": "llm_json_parsed", "file_name": file.filename})
 
-            return Resume(**data)
+            resume_obj = Resume(**data)
+            logger.info({
+                "event": "resume_model_created",
+                "file_name": file.filename,
+                "resume_name": resume_obj.name
+            })
+
+            return resume_obj
 
         except json.JSONDecodeError as e:
-            logger.error(f"JSON decode error in resume parsing: {str(e)}")
+            logger.error({"event": "json_decode_error", "error": str(e), "file_name": file.filename})
             raise
 
         except Exception as e:
-            logger.error(f"Unexpected error in resume parsing: {str(e)}")
+            logger.error({"event": "parse_resume_unexpected_error", "error": str(e), "file_name": file.filename})
             raise
 
-    
-    def parse(self,resume_text:str) -> dict:
-        prompt = get_resume_prompt(resume_text)
+    # -------------------------------
+    # PARSE RESUME FROM RAW TEXT
+    # -------------------------------
+    def parse(self, resume_text: str) -> Resume:
+        try:
+            logger.info({"event": "parse_text_resume_start"})
 
-        llm_response = self.llm.parse(prompt)
+            prompt = get_resume_prompt(resume_text)
+            logger.info({"event": "prompt_created_for_text"})
 
-        data = json.loads(llm_response)
+            llm_response = self.llm.parse(prompt)
+            logger.info({"event": "llm_response_received_for_text"})
 
-        return Resume(**data)
-        
+            data = json.loads(llm_response)
+            logger.info({"event": "llm_json_parsed_for_text"})
+
+            resume_obj = Resume(**data)
+            logger.info({"event": "resume_model_created_from_text", "resume_name": resume_obj.name})
+
+            return resume_obj
+
+        except json.JSONDecodeError as e:
+            logger.error({"event": "json_decode_error_in_parse", "error": str(e)})
+            raise
+
+        except Exception as e:
+            logger.error({"event": "parse_text_unexpected_error", "error": str(e)})
+            raise
