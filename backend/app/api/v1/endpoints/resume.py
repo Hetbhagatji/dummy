@@ -3,10 +3,16 @@ from app.services.resume_service import ResumeService
 from app.llm_models.grok_llm import GroqLLM
 from app.llm_models.ollama_lllm import OllamaLLM
 import yaml
+from pathlib import Path
 from app.llm_models.llm_factory import get_llm
 router = APIRouter()
 
-with open(r"C:\Users\hetbh\OneDrive\Desktop\resume-parser\backend\app\config\llm_config.yml") as f:
+BASE_DIR = Path(__file__).resolve().parents[4]
+# resume.py -> endpoints -> v1 -> api -> app -> backend
+
+CONFIG_PATH = BASE_DIR / "app" / "config" / "llm_config.yml"
+
+with open(CONFIG_PATH, "r") as f:
     config = yaml.safe_load(f)
 
 llm_instance=get_llm(config["llm_model"])

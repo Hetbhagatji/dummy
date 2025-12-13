@@ -101,6 +101,18 @@ class MatchingService:
             "total_resumes": len(resumes),
             "job_role": job.job_role
         })
+        self.logger.info({
+            "event": "weights_received",
+            "weights": {
+                "summary": weights.summary_weight,
+                "experience": weights.experience_weight,
+                "skills": weights.skills_weight,
+                "education": weights.education_weight,
+                "location": weights.location_weight,
+                "achievements": weights.achievements_weight
+            }
+        })
+
 
         ranked = []
         for resume in resumes:
