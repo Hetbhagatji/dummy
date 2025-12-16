@@ -31,3 +31,11 @@ class Resume(BaseModel):
     achivements:Optional[List[str]]=Field(
         None,description="List of achivements"
     )
+    resume_domain: Optional[str] = Field(
+        None,
+        description=(
+            "Primary professional domain inferred from the resume such as "
+            "Banking, Finance, Pharmaceutical, Healthcare, IT, Software, "
+            "Data Science, Marketing, Sales, Education, Mechanical, Civil, etc."
+        )
+    )

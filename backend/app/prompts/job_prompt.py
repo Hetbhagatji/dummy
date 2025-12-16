@@ -7,21 +7,45 @@ def get_job_prompt(job_text: str) -> str:
 
 CRITICAL INSTRUCTIONS:
 1. Return ONLY valid JSON
-2. Do NOT use markdown or ```json
+2. No markdown, no explanations
 3. Output must match this schema exactly
 
 SCHEMA:
 {schema}
 
-RULES:
+DOMAIN STANDARDIZATION RULES (CRITICAL):
+- job_domain MUST be exactly ONE value from:
+  TECH, PHARMACEUTICAL, SALES, MARKETING, HR,
+  FINANCE, QA, OPERATIONS, PRODUCT, DESIGN, OTHER
+
+- company_domain MUST be exactly ONE value from:
+  PHARMACEUTICAL, HEALTHCARE, BANKING, FINANCE, IT,
+  MANUFACTURING, EDUCATION, RETAIL, ENERGY, OTHER
+
+DOMAIN INTERPRETATION RULES:
+- company_domain = industry of the company
+- job_domain = functional role of the job
+- company_domain and job_domain can be DIFFERENT
+- Example:
+  Pharmaceutical company hiring Data Analyst →
+  company_domain = PHARMACEUTICAL
+  job_domain = TECH
+
+SALARY RULES:
+- Extract salary text EXACTLY as written
+- Infer salary_period as:
+  yearly / monthly / hourly
+- If unclear → null
+
+GENERAL RULES:
 - Missing fields → null
 - Empty lists → []
 - Do not hallucinate values
-- Extract text exactly
+- Use UPPERCASE for domains
 
 JOB DESCRIPTION:
 ---
 {job_text}
 ---
 
-Respond with JSON only:"""
+Respond with JSON only:""" 

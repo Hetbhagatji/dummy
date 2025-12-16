@@ -2,31 +2,45 @@ from app.schemas.resume_schema import Resume
 
 def get_resume_prompt(resume_text: str) -> str:
     schema = Resume.schema_json(indent=2)
-    
-    return f"""Extract structured information from the resume and return it as JSON.
+
+    return f"""Extract structured resume information and return a VALID JSON object.
 
 CRITICAL INSTRUCTIONS:
-1. Return ONLY a valid JSON object - no markdown code blocks, no explanations
-2. Do not wrap the JSON in ```json``` or any other formatting
-3. Start your response with {{ and end with }}
-4. Follow this exact schema:
+1. Return ONLY valid JSON
+2. No markdown, no explanations
+3. Start response with {{ and end with }}
+4. Output MUST match this schema exactly
 
+SCHEMA:
 {schema}
 
 FIELD EXTRACTION RULES:
-- Extract data exactly as it appears in the resume
-- For missing fields, use null (not "null" string, not empty string)
-- For arrays/lists, use [] if no items found
-- Ensure all strings are properly escaped
-- Format dates as strings in ISO format (YYYY-MM-DD) or as written
-- For phone numbers and emails, extract exact text without modification
+- Extract text exactly as it appears
+- Missing fields → null
+- Missing lists → []
+- Do NOT hallucinate values
+- Ensure JSON is valid and parseable
+
+DOMAIN INFERENCE RULES (IMPORTANT):
+- Infer resume_domain from experience, role titles, and skills
+- Choose the CLOSEST matching domain from the list below
+- If domain is unclear, mixed, or low confidence → use "OTHER"
+- resume_domain MUST ALWAYS be present
+- Use UPPERCASE only
+
+ALLOWED resume_domain VALUES:
+TECH, PHARMACEUTICAL, SALES, MARKETING, HR,
+FINANCE, QA, OPERATIONS, PRODUCT, DESIGN, OTHER
+
+MATCHING INTENT:
+- resume_domain is used ONLY for filtering before similarity scoring
+- Accuracy is preferred, but safety is more important than certainty
 
 VALIDATION:
-- Double-check the JSON is valid before responding
-- Ensure all required fields from schema are present
-- Match data types exactly (string, number, array, object, boolean, null)
+- Double-check JSON validity before responding
+- Ensure resume_domain is one of the allowed values
 
-Resume text to parse:
+RESUME TEXT:
 ---
 {resume_text}
 ---

@@ -5,7 +5,10 @@ from app.schemas.resume_schema import Resume
 from app.schemas.job_schema import Job
 from app.schemas.weight_schema import WeightSchema
 from app.config.logger import get_logger
+from app.services.resume_filter_service import ResumeFilterService
 
+
+filter_service=ResumeFilterService()
 
 class MatchingService:
     def __init__(self):
@@ -99,8 +102,32 @@ class MatchingService:
         self.logger.info({
             "event": "ranking_start",
             "total_resumes": len(resumes),
-            "job_role": job.job_role
+            "job_role": job.job_role,
+            "job_domain": job.job_domain
         })
+
+        # ✅ DOMAIN FILTERING (simple, exact match)
+        # filtered_resumes = [
+        #     resume for resume in resumes
+        #     if resume.resume_domain == job.job_domain
+        # ]
+        filtered_resumes=filter_service.filter_by_domain(resumes,job)
+
+        self.logger.info({
+            "event": "domain_filter_applied",
+            "job_domain": job.job_domain,
+            "before_filter": len(resumes),
+            "after_filter": len(filtered_resumes)
+        })
+
+        # If no resumes match domain, stop early
+        if not filtered_resumes:
+            self.logger.warning({
+                "event": "no_resumes_after_domain_filter",
+                "job_domain": job.job_domain
+            })
+            return []
+
         self.logger.info({
             "event": "weights_received",
             "weights": {
@@ -113,9 +140,8 @@ class MatchingService:
             }
         })
 
-
         ranked = []
-        for resume in resumes:
+        for resume in filtered_resumes:
             score_obj = self.match_resume_to_job(resume, job, weights)
             ranked.append({
                 "name": resume.name,

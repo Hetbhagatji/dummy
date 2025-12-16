@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parents[4]
 CONFIG_PATH = BASE_DIR / "app" / "config" / "llm_config.yml"
 
 with open(CONFIG_PATH, "r") as f:
-    config = yaml.safe_load(f)
+    config = yaml.safe_load(f)  
 
 llm_instance=get_llm(config["llm_model"])
 resume_service=ResumeService(llm=llm_instance)
