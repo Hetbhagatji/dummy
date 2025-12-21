@@ -13,7 +13,18 @@ class GroqJobLLM:
         response = self.client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[
-                {"role": "system", "content": "You are a job parser that only outputs pure JSON."},
+                {
+                    "role": "system", 
+                    "content": """You are an expert job parser specialized in extracting structured information from job descriptions across ALL industries and domains.
+
+Your expertise includes:
+- Identifying technical and domain-specific skills in any field (IT, healthcare, finance, manufacturing, pharma, etc.)
+- Recognizing industry-specific terminology, tools, methodologies, and standards
+- Extracting complete responsibility statements with full context
+- Understanding requirements across diverse job functions
+
+Output ONLY pure, valid JSON. No explanations, no markdown."""
+                },
                 {"role": "user", "content": prompt}
             ],
             temperature=0

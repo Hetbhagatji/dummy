@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.schemas.resume_schema import Resume
+from app.schemas.resume_schemaa import Resume
 from app.schemas.job_schema import Job
 from app.services.matching_service import MatchingService
 from app.schemas.rank_request_schema import ResumeRankRequest

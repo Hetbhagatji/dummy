@@ -22,7 +22,7 @@ resume_service=ResumeService(llm=llm_instance)
 @router.post("/extract-text")
 async def extract_text(file: UploadFile = File(...)):
     response=resume_service.extract_text(file)
-    print(response)
+    
     return response
 
 @router.post("/parse-resume")
@@ -32,3 +32,6 @@ def parse_resume(file: UploadFile = File(...)):
 @router.post("/parse")
 def parse(resume_text:str):
     return resume_service.parse(resume_text=resume_text)
+@router.post("/parse-skills")
+def parse_skills(resume_text:str):
+    return resume_service.parse_skills(resume_text=resume_text)
