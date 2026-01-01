@@ -29,7 +29,6 @@ print("=== STAGE 1: RAW EXTRACTION ===")
 raw_extractor = RawJobExtractor()
 raw_data = raw_extractor.extract(job_description)
 print(raw_data.model_dump_json(indent=2))
-print(raw_data)
 
 # STAGE 2: Structured Parsing (NEW)
 print("\n=== STAGE 2: STRUCTURED PARSING ===")

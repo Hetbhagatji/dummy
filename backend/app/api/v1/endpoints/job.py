@@ -4,9 +4,9 @@ from app.llm_models.grok_job_llm import GroqJobLLM
 
 router = APIRouter()
 
-llm_instance = GroqJobLLM()
-job_service = JobService(llm=llm_instance)
-
+# llm_instance = GroqJobLLM()
+# job_service = JobService(llm=llm_instance)
+job_service=JobService()
 @router.post("/parse-job")
 def parse_job(job_text: str):
     return job_service.parse_job(job_text)

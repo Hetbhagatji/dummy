@@ -3,3 +3,6 @@ __pycache__/
 *.py[cod]
 resume-parser-env/
 app.log
+testing/
+testing_2/
+testing_3/
