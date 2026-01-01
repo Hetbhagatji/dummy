@@ -8,7 +8,7 @@ OperatorType = Literal["AND", "OR", "N_OF"]
 # ---------------------------
 
 class Location(BaseModel):
-    city: Optional[str] = None
+    city: Optional[List[str]] = None
     state: Optional[str] = None
     country: Optional[str] = None
 

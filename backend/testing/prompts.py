@@ -1,5 +1,4 @@
 def create_job_parser_system_prompt(job_text: str) -> str:
-    """Return the global system prompt for the job description parser."""
     return f"""
 You are a job description parsing expert. Your task is to extract and structure job requirements from the job description into a structured format.
 
@@ -23,9 +22,16 @@ For soft skills:
 - Do NOT output objects
 - Do NOT include proficiency, weight, or experience
 
+Important Instructions:
+- Extract ONLY the information explicitly mentioned in the job description.
+- Do NOT infer, assume, or add any requirements that are not explicitly stated in the job description.
+- If a requirement is not mentioned, do NOT include it in the output.
+- For soft skills, only include those explicitly mentioned in the job description.
+
 Job Description:
 {job_text}
 """
+
 
 def create_metadata_prompt(global_context: str) -> str:
     """Return the prompt for extracting job metadata."""
@@ -48,7 +54,6 @@ Output only the JSON object.
 """
 
 def create_group_prompt(global_context: str, requirement_type: str, prefix: str, items_key: str) -> str:
-    """Return a generic group prompt for education, skills, certifications, experience."""
     return f"""
 {global_context}
 
@@ -56,6 +61,8 @@ Task:
 Extract and structure {requirement_type} requirements from the job description into a structured group format.
 
 Rules:
+- Extract ONLY the information explicitly mentioned in the job description.
+- Do NOT infer, assume, or add any requirements that are not explicitly stated.
 - Group related items logically.
 - Use:
   - "AND" if all items in the group must be satisfied.
@@ -71,8 +78,13 @@ Rules:
   - mandatory (true/false)
   - {items_key}
 
+Important Instructions:
+- Extract ONLY the information explicitly mentioned in the job description.
+- Do NOT infer, assume, or add any requirements that are not explicitly stated.
+
 Output only the JSON list.
 """
+
 
 def create_assembly_prompt(
     global_context: str,

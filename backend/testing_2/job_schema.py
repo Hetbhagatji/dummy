@@ -3,21 +3,18 @@ from typing import List, Optional, Literal
 
 OperatorType = Literal["AND", "OR", "N_OF"]
 
-
 # ---------------------------
 # BASIC SHARED STRUCTURES
 # ---------------------------
 
 class Location(BaseModel):
-    city: Optional[str] = None
+    city: Optional[List[str]] = None
     state: Optional[str] = None
     country: Optional[str] = None
-
 
 class ExperienceRange(BaseModel):
     min: Optional[int] = Field(None, description="Minimum years of experience required")
     max: Optional[int] = Field(None, description="Maximum years of experience allowed")
-
 
 # ---------------------------
 # ORGANIZATION DETAILS
@@ -33,7 +30,6 @@ class Organization(BaseModel):
         None,
         description="Employee count range such as 50-100, 100-500"
     )
-
 
 # ---------------------------
 # ROLE & JOB METADATA
@@ -56,11 +52,9 @@ class JobMetadata(BaseModel):
         None,
         description="Onsite, Remote, Hybrid"
     )
-    location: Optional[Location] = None
-    
+    location: Optional[List[Location]] = None
     experience_required_years: Optional[ExperienceRange] = None
     posted_date: Optional[str] = None
-    
 
 class SalaryRange(BaseModel):
     min_amount: Optional[float] = Field(
@@ -84,7 +78,6 @@ class SalaryRange(BaseModel):
         description="Original salary text as mentioned in JD"
     )
 
-
 class RoleDetails(BaseModel):
     summary: Optional[str] = Field(
         None,
@@ -99,7 +92,6 @@ class RoleDetails(BaseModel):
         description="Team or specialization such as Backend Engineering"
     )
 
-
 # ---------------------------
 # EDUCATION REQUIREMENTS
 # ---------------------------
@@ -111,22 +103,19 @@ class DegreeRequirement(BaseModel):
     )
     fields: Optional[List[str]] = None
 
-
-
 class EducationGroup(BaseModel):
     group_id: Optional[str]
     operator: OperatorType
-    min_required: Optional[int] = None   # used only for N_OF
+    min_required: Optional[int] = None
     mandatory: bool = True
     degrees: List[DegreeRequirement]
-
-
 
 class EducationRequirements(BaseModel):
     groups: List[EducationGroup]
 
-
-##Certifications
+# ---------------------------
+# CERTIFICATIONS
+# ---------------------------
 
 class CertificationRequirement(BaseModel):
     certification_name: str
@@ -139,7 +128,6 @@ class CertificationGroup(BaseModel):
     mandatory: bool = True
     certifications: List[CertificationRequirement]
 
-
 class CertificationRequirements(BaseModel):
     groups: List[CertificationGroup]
 
@@ -147,13 +135,14 @@ class CertificationRequirements(BaseModel):
 # SKILL REQUIREMENTS
 # ---------------------------
 
+
 class SkillRequirement(BaseModel):
     skill_name: str
     category: Optional[str] = Field(
         None,
         description="Programming Language, Framework, DevOps, Database"
     )
-    min_experience_years: Optional[int] = None
+    min_experience_years: Optional[float] = None
     proficiency_level: Optional[str] = Field(
         None,
         description="Beginner, Intermediate, Advanced"
@@ -163,10 +152,9 @@ class SkillRequirement(BaseModel):
         description="Used only in ranking, not hard filtering"
     )
 
-
 class SkillGroup(BaseModel):
     group_id: Optional[str]
-    operator: Literal["AND", "OR","N_OF"]
+    operator: Literal["AND", "OR", "N_OF"]
     min_required: Optional[int] = None
     mandatory: bool = Field(
         True,
@@ -174,17 +162,18 @@ class SkillGroup(BaseModel):
     )
     skills: List[SkillRequirement]
 
-
 class SkillRequirements(BaseModel):
     groups: List[SkillGroup]
-
 
 class SoftSkillRequirements(BaseModel):
     skills: List[str] = Field(
         description="Non-technical skills such as communication, negotiation, teamwork"
     )
 
-##EXPERIENCE
+# ---------------------------
+# EXPERIENCE
+# ---------------------------
+
 class ExperienceRequirement(BaseModel):
     experience_area: Optional[str] = Field(
         None,
@@ -199,10 +188,9 @@ class ExperienceGroup(BaseModel):
     min_required: Optional[int] = None
     mandatory: bool = True
     experiences: List[ExperienceRequirement]
-    
+
 class ExperienceRequirements(BaseModel):
     groups: List[ExperienceGroup]
-
 
 # ---------------------------
 # MATCHING PREFERENCES
@@ -214,40 +202,20 @@ class MatchingPreferences(BaseModel):
     education_match_weight: float = Field(0.15)
     location_match_weight: float = Field(0.10)
 
-
 # ---------------------------
 # JOB ROOT MODEL
 # ---------------------------
 
 class Job(BaseModel):
     job_id: Optional[str] = None
-
     job_metadata: JobMetadata
-
-    # organization: Optional[Organization] = None
-
-    # role: RoleDetails
-
     education_requirements: Optional[EducationRequirements] = None
-
     skill_requirements: Optional[SkillRequirements] = None
-    
     soft_skill_requirements: Optional[SoftSkillRequirements] = None
-    
     certification_requirements: Optional[CertificationRequirements] = None
-    
     experience_requirements: Optional[ExperienceRequirements] = None
-    
     responsibilities: Optional[List[str]] = Field(
         None,
         description="Explicit responsibilities list used for role similarity"
     )
-
-    # matching_preferences: Optional[MatchingPreferences] = None
-
     salary: Optional[SalaryRange] = None
-
-    # raw_text: Optional[str] = Field(
-    #     None,
-    #     description="Original job description text or HTML"
-    # )
