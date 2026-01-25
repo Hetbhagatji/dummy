@@ -44,7 +44,10 @@ EDUCATION RULES
 --------------------------------
 - Each degree must be a separate entry
 - Extract degree level only (Bachelor's, Master's, Doctorate, Diploma, Certificate)
-- Extract specialization separately in field_of_study
+- fill degree_name but make sure I want whole degree name not the short form you need to normalized that thing like if b.tech than Bachelor of technology and same for all degree names.make sure that you have to find name of any degree in the world.
+- Extract specialization separately in field of study.
+- make sure to separate degree names with field attribute.
+- degree_name` MUST contain ONLY the academic degree title and MUST NOT include specialization, field, or "in <field>" phrases
 - Order education entries from most recent to oldest
 - Use "Present" if education is ongoing
 - Do not guess grades or achievements
@@ -83,6 +86,7 @@ RESPONSIBILITIES:
 SKILLS RULES (GLOBAL)
 --------------------------------
 - Extract skills explicitly stated or clearly demonstrated through responsibilities or achievements
+- Extract category of skill based on the context and meaning of the skill_name.
 - Support all industries (technical, healthcare, engineering, finance, operations, etc.)
 - Deduplicate skills across the entire resume
 - Classify skills as:
@@ -91,6 +95,19 @@ SKILLS RULES (GLOBAL)
 - Add soft skills only when demonstrated by actions or results, not assumptions
 - Do NOT duplicate the same skill in both lists
 - Do NOT infer proficiency or experience level unless explicitly stated
+
+SKILL CATEGORY ASSIGNMENT:
+- Populate the "category" field for every extracted skill.
+CATEGORY CLASSIFICATION RULE:
+
+- The `category` field represents the functional classification
+  of a skill, NOT an inferred capability.
+
+- Category assignment is ALLOWED and REQUIRED
+  when the skill clearly belongs to a well-known technical class.
+  
+- Category assignment MUST be based ONLY on the skill name itself.
+
 
 
 --------------------------------

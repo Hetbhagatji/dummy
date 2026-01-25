@@ -36,9 +36,12 @@ Field-specific scope:
     including "Required", "Preferred", "Nice to have", etc.
   - Do NOT stop after the first skill section.
   - Include whole sentence or  point when we extract a skill from sentence or point 
+  - you have to find skills from all over job descreption  because skills can lie in everywhere so understand what is skill according to job role and requirements .
 - raw_experience_text:
   - Include all experience requirements, including preferred experience.
-
+- raw_education_requirements_text:
+  - Extract only the sentence fragments that explicitly mention academic degrees or formal education.
+  - If a sentence contains both education and certification content, include ONLY the education-related portion and EXCLUDE certification phrases.
 
 CRITICAL JSON RULES:
 - Escape all newlines as \\n
@@ -59,3 +62,5 @@ No markdown. No explanation.
 JOB DESCRIPTION:
 {job_text}
 """
+
+

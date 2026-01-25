@@ -7,7 +7,9 @@ EDUCATION_SCHEMA = """
       "min_required": "int|null",
       "mandatory": "boolean",
       "degrees": [{
-        "degree": "string|null",
+        "degree_level":"string|null",
+        "degree_name":"string|null",
+        "degree_category": "string|null",
         "fields": ["string"]|null
       }]
     }]
@@ -35,11 +37,20 @@ UNIVERSAL RULES:
 - Take RIGHT side of FIRST separator → fields[0] 
 - Remove "(" ")" from fields
 - If no separator → fields = null
+- fill degree_name but make sure I want whole degree name not the short form you need to normalized that thing like if b.tech than Bachelor of technology and same for all degree names.make sure that you have to find name of any degree in the world.
+- Fill degree_level using only one of the following standardized values:
+"Bachelor's", "Master's", "Diploma", or "Doctorate".
+
+FIELD SCOPE RULE (CRITICAL):
+- If multiple degrees are connected by "and", "/", or "," BEFORE a single "in <field list>",
+  THEN apply the SAME extracted fields to ALL degrees in that group.
+- Do NOT split fields per degree unless explicitly stated.
 
 **STEP 1: Identify Atomic Degrees**
 Extract all individual degree mentions while preserving sentence position and relationships.
 
 **STEP 2: Parse Sentence Structure for Logical Relationships**
+
 
 1. **Separators and their meaning:**
    - **"or"** → alternatives (OR relationship)
@@ -69,7 +80,6 @@ Extract all individual degree mentions while preserving sentence position and re
 
 DEGREE IDENTIFICATION (LIGHTWEIGHT & UNIVERSAL):
 - field(s) = subject/specialization only
-- Concrete degrees ONLY (B.E, B.Tech, MCA)
 - NO abstraction unless verbatim ("Bachelor's", "Master's")
 
 FIELD INFERENCE RULE:

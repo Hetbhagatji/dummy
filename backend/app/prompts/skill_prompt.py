@@ -24,9 +24,10 @@ SKILL_SCHEMA = """
 SKILL_PARSING_RULES = """
 SKILL PARSING RULES:
 
-0.Hard filtering
-IGNORE: soft skills, behaviors, role titles, general experience, attitudes
--Ignore skills which are not related to technical work
+# 0.Hard filtering
+# you have to analyze skills perfectly  because skills can present anywhere in the raw_skills_text you have to analyze all skills which is related as a skill. 
+# IGNORE: soft skills, behaviors, role titles, general experience, attitudes
+# -Ignore skills which are not related to technical work
 
 1. SEPARATORS AND LOGIC:
 - "or" → OR
@@ -83,6 +84,7 @@ CATEGORY CLASSIFICATION RULE:
 - If a skill does not clearly map to one category,
   set category = null.
   
+
 Group Id related rule
 -group_id must be start with like skill1 then skill2,skill3
 """

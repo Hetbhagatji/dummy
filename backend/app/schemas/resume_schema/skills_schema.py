@@ -17,7 +17,7 @@ class Skill(BaseModel):
         - General: Soft Skills, Communication, Leadership, Project Management
         """
     )
-    years_of_experience: Optional[float] = Field(
+    min_experience_years: Optional[float] = Field(
         None,
         description="Years of experience with this specific skill"
     )

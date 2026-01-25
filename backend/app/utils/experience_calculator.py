@@ -58,15 +58,15 @@ def calculate_experience_months(
     return total_months
 
 
-def enrich_work_history(work_history):
+def enrich_work_history(experience_requirements):
     """
     Enrich work history entries with calculated experience duration.
     Adds total_experience_months and total_experience_years to each entry.
     """
-    if not work_history or not work_history.entries:
-        return work_history
+    if not experience_requirements or not experience_requirements.experience_areas:
+        return experience_requirements
 
-    for entry in work_history.entries:
+    for entry in experience_requirements.experience_areas:
         months = calculate_experience_months(
             entry.start_date,
             entry.end_date
@@ -77,4 +77,4 @@ def enrich_work_history(work_history):
             round(months / 12, 1) if months is not None else None
         )
 
-    return work_history
+    return experience_requirements

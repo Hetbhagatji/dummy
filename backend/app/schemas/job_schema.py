@@ -44,7 +44,8 @@ class RoleDetails(BaseModel):
 
 # EDUCATION REQUIREMENTS
 class DegreeRequirement(BaseModel):
-    degree: Optional[str] = Field(None, description="Degree level only: Bachelor's, Master's, PhD, Diploma")
+    degree_level:Optional[str]=None
+    degree_name:Optional[str]=None
     fields: Optional[List[str]] = None
 
 class EducationGroup(BaseModel):
@@ -59,7 +60,7 @@ class EducationRequirements(BaseModel):
 
 # CERTIFICATIONS
 class CertificationRequirement(BaseModel):
-    certification_name: str
+    certification_name: Optional[str]
     issuing_body: Optional[str] = None
 
 class CertificationGroup(BaseModel):
@@ -70,7 +71,7 @@ class CertificationGroup(BaseModel):
     certifications: List[CertificationRequirement]
 
 class CertificationRequirements(BaseModel):
-    groups: List[CertificationGroup]
+    groups: Optional[List[CertificationGroup]]
 
 # SKILL REQUIREMENTS
 class SkillRequirement(BaseModel):
@@ -112,7 +113,8 @@ class MatchingPreferences(BaseModel):
     skill_match_weight: float = Field(0.5)
     experience_match_weight: float = Field(0.25)
     education_match_weight: float = Field(0.15)
-    location_match_weight: float = Field(0.10)
+    location_match_weight: float = Field(0.5)
+    responsibility_match_weight: float = Field(0.5)
 
 # JOB ROOT MODEL
 class Job(BaseModel):
@@ -125,3 +127,10 @@ class Job(BaseModel):
     experience_requirements: Optional[ExperienceRequirements] = None
     responsibilities: Optional[List[str]] = Field(None, description="Explicit responsibilities list used for role similarity")
     salary: Optional[SalaryRange] = None
+
+# Default values (sums to 1.0)
+class MatchingPreferences(BaseModel):
+    skill_match_weight: float = Field(0.5,  ge=0.0, le=1.0)    # Skills most important
+    experience_match_weight: float = Field(0.25, ge=0.0, le=1.0)
+    education_match_weight: float = Field(0.15, ge=0.0, le=1.0)
+    location_match_weight: float = Field(0.10, ge=0.0, le=1.0)

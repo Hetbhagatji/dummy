@@ -68,7 +68,7 @@ class ResumeService:
             # })
             
             # ✅ ENRICH WORK HISTORY WITH EXPERIENCE CALCULATIONS
-            resume_obj.work_history = enrich_work_history(resume_obj.work_history)
+            resume_obj.experience = enrich_work_history(resume_obj.experience)
             # logger.info({
             #     "event": "work_history_enriched",
             #     "file_name": file.filename
@@ -117,8 +117,8 @@ class ResumeService:
             resume_obj = Resume(**data)
             logger.info({"event": "resume_model_created_from_text", "resume_name": resume_obj.name})
             # ✅ BACKEND EXPERIENCE CALCULATION
-            resume_obj.work_history = enrich_work_history(
-                resume_obj.work_history
+            resume_obj.experience = enrich_work_history(
+                resume_obj.experience
             )
             resume_obj.raw_text=resume_text
             resume_obj.parsed_date=datetime.now()

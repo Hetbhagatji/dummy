@@ -1,13 +1,13 @@
 from pydantic import BaseModel, Field
 from typing import Optional,List
-
+from .location import Location
 class WorkExperience(BaseModel):
     job_title: Optional[str] = Field(
         None,
         description="Job title for any industry: Software Engineer, Clinical Research Associate, Financial Analyst, Pharmacist, Nurse, etc."
     )
     company_name: Optional[str] = None
-    location: Optional[str] = None
+    location: Optional[Location] = None
     employment_type: Optional[str] = Field(
         None,
         description="Full-time, Part-time, Contract, Internship, Fellowship"
@@ -26,8 +26,8 @@ class WorkExperience(BaseModel):
     
 
 
-class WorkHistory(BaseModel):
-    entries: List[WorkExperience] = Field(
+class Experience(BaseModel):
+    experience_areas: List[WorkExperience] = Field(
         default_factory=list
     )
     # total_experience_months: Optional[str] = Field(

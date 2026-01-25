@@ -1,16 +1,18 @@
 from pydantic import BaseModel, Field
 from typing import Optional,List
+from app.schemas.resume_schema.location import Location
 class EducationEntry(BaseModel):
-    degree: Optional[str] = Field(
+    degree_level:Optional[str]=None
+    degree_name: Optional[str] = Field(
         None,
         description="Universal degree levels: Bachelor's, Master's, PhD, MD, PharmD, MBA, JD, Diploma, etc."
     )
-    field_of_study: Optional[str] = Field(
+    field: Optional[List[str]] = Field(
         None,
         description="Field for ANY industry: Computer Science, Pharmacy, Finance, Medicine, Law, Mechanical Engineering, etc."
     )
-    institution: Optional[str] = None
-    location: Optional[str] = None
+    institution: Optional[str] = None    
+    location: Optional[Location] = None
     start_date: Optional[str] = None
     end_date: Optional[str] = Field(
         None,
