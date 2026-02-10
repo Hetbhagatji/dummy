@@ -97,6 +97,7 @@ class ExperienceRequirement(BaseModel):
     experience_area: Optional[str] = Field(None, description="Area or context of experience such as Clinical Dentistry, Banking, Backend Development")
     min_years: Optional[float] = None
     max_years: Optional[float] = None
+    key_technologies: Optional[List[str]] = None
 
 class ExperienceGroup(BaseModel):
     group_id: Optional[str] = None

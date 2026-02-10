@@ -21,8 +21,9 @@ class WorkExperience(BaseModel):
         default_factory=list,
         description="Responsibilities and achievements for any role"
     )
-    total_experience_months:Optional[int]=None
-    total_experience_years:Optional[float]=None
+    total_experience_months:Optional[int]= None
+    total_experience_years:Optional[float]= None
+    extracted_keywords: Optional[List[str]]= None
     
 
 

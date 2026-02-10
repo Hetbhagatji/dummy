@@ -45,7 +45,8 @@ STRUCTURED_JOB_SCHEMA = """
       "experiences": [{
         "experience_area": "string|null",
         "min_years": "float|null",
-        "max_years": "float|null"
+        "max_years": "float|null",
+        "key_technologies":"null| list[str]"
       }]
     }]
   },

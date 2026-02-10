@@ -80,6 +80,8 @@ RESPONSIBILITIES:
 - Keep metrics and quantified results if present
 - Do not rewrite content
 
+-extracted_keywords:
+- Extract important keywords and phrases directly from the responsibilities bullet points (e.g., tools, technologies, actions, metrics) without rewriting or modifying the original content.
 
 
 --------------------------------
