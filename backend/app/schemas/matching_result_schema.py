@@ -3,10 +3,11 @@ from typing import Optional, List, Dict
 from datetime import datetime
 from app.schemas.SkillsExcess import SkillsExcess
 
+
 # ==================== BASE SCORES ====================
 
 class BaseScores(BaseModel):
-    """Base matching scores (current system output)"""
+    """Base matching scores. Always in [0.0, 1.0]."""
     skills: float = Field(ge=0.0, le=1.0)
     experience: float = Field(ge=0.0, le=1.0)
     education: float = Field(ge=0.0, le=1.0)
@@ -17,60 +18,40 @@ class BaseScores(BaseModel):
 # ==================== EXCESS METRICS ====================
 
 class EducationExcessMetrics(BaseModel):
-    """Tracks education beyond requirements"""
-    required_degrees: int = Field(description="Number of degrees job requires")
-    candidate_degrees: int = Field(description="Number of degrees candidate has")
-    excess_count: int = Field(description="Excess degrees (candidate - required)")
-    degree_levels: List[str] = Field(description="All degree levels candidate has")
-    
-    # # Weighted excess (optional - for advanced scoring)
-    # weighted_excess: Optional[float] = Field(
-    #     None, 
-    #     description="Weighted by level: PhD=3, Master=2, Bachelor=1"
-    # )
+    """Tracks education beyond requirements."""
+    required_degrees: int
+    candidate_degrees: int = Field(description="Raw count including duplicates")
+    excess_count: int = Field(description="Can be negative (deficit)")
+    degree_levels: List[str] = Field(description="UNIQUE degree levels (deduplicated by ExcessCalculator)")
 
 
 class SkillsExcessMetrics(BaseModel):
-    """Tracks skills beyond requirements"""
-    required_skills_count: int = Field(description="Total minimum skills needed")
-    matched_skills_count: int = Field(description="Total skills candidate has that match")
-    excess_count: int = Field(description="Extra matched skills")
-    
-    # # Per-group breakdown
-    # group_excesses: List[int] = Field(
-    #     description="Excess per group: [group1_excess, group2_excess, ...]"
-    # )
-    
-    # # Optional: list of extra skill names
-    # extra_skills: Optional[List[str]] = Field(None)
+    """Tracks skills beyond requirements."""
+    required_skills_count: int
+    matched_skills_count: int
+    excess_count: int = Field(description="Can be negative (deficit)")
 
 
 class ExperienceExcessMetrics(BaseModel):
-    """Tracks experience beyond requirements"""
-    required_years: float = Field(description="Minimum years required")
-    candidate_years: float = Field(description="Total years candidate has")
-    excess_years: float = Field(description="Years beyond minimum")
-    
-    # Area coverage
-    required_areas: int = Field(description="Number of experience areas required")
-    matched_areas: int = Field(description="Number of areas candidate matches")
-    excess_areas: int = Field(
-        description="Extra areas beyond required (can be 0 or negative)"
-    )
+    """Tracks experience beyond requirements."""
+    required_years: float = Field(description="SUM of min_years across all required areas")
+    candidate_years: float
+    excess_years: float = Field(description="Floored at 0")
+    required_areas: int
+    matched_areas: int
+    excess_areas: int = Field(description="Can be negative when required areas unmatched")
 
 
 class CertificationExcessMetrics(BaseModel):
-    """Tracks certifications beyond requirements"""
-    required_certs: int = Field(description="Number of certs required")
-    candidate_certs: int = Field(description="Number of certs candidate has")
-    excess_count: int = Field(description="Extra certifications")
-    
-    # Optional: list of extra cert names
+    """Tracks certifications beyond requirements."""
+    required_certs: int
+    candidate_certs: int
+    excess_count: int = Field(description="Can be negative (deficit)")
     extra_certs: Optional[List[str]] = Field(None)
 
 
 class ExcessMetrics(BaseModel):
-    """Complete excess metrics for a candidate"""
+    """Complete excess metrics for a candidate."""
     education: EducationExcessMetrics
     skills: SkillsExcess
     experience: ExperienceExcessMetrics
@@ -80,29 +61,44 @@ class ExcessMetrics(BaseModel):
 # ==================== ADDITIONAL SCORES (NORMALIZED) ====================
 
 class AdditionalScores(BaseModel):
-    """Normalized additional scores (0.0 to 1.0) relative to all candidates"""
-    education_additional: float = Field(
-        ge=0.0, le=1.0,
-        description="Normalized excess education score"
-    )
-    skills_additional: float = Field(
-        ge=0.0, le=1.0,
-        description="Normalized excess skills score"
-    )
-    experience_additional: float = Field(
-        ge=0.0, le=1.0,
-        description="Normalized excess experience score"
-    )
-    certifications_additional: float = Field(
-        ge=0.0, le=1.0,
-        description="Normalized excess certifications score"
-    )
+    """
+    Normalised tiebreaker scores relative to all candidates.
+
+    Range: [-1.0, +1.0]
+        +1.0 = best in batch for this dimension  → gets maximum bonus
+         0.0 = middle of batch OR all tied       → no change to score
+        -1.0 = worst in batch for this dimension → gets maximum penalty
+
+    This [-1, +1] scale is intentional:
+        The candidate with the MOST excess (e.g. most extra skills) keeps
+        their score at maximum.  Candidates with LESS excess get their score
+        REDUCED proportionally.  This differentiates tied candidates where
+        base scores alone cannot.
+
+    The penalty is bounded by additional_weight (default 0.10), so a
+    candidate can lose at most 0.10 from their base score.
+    final_comparative_score is hard-clamped to [0.0, 1.0].
+    """
+    education_additional: float = Field(ge=-1.0, le=1.0)
+    skills_additional: float = Field(ge=-1.0, le=1.0)
+    experience_additional: float = Field(ge=-1.0, le=1.0)
+    certifications_additional: float = Field(ge=-1.0, le=1.0)
 
 
-# ==================== CATEGORY SCORES (BASE + ADDITIONAL) ====================
+# ==================== CATEGORY SCORES (DISPLAY ONLY) ====================
 
 class CategoryScores(BaseModel):
-    """Combined scores per category (base + additional)"""
+    """
+    Combined per-category scores for display purposes only. Always in [0.0, 1.0].
+
+    Formula:
+        category_score = clamp(base_score + additional_norm × additional_weight, 0.0, 1.0)
+
+    FIX: Previously these were NOT clamped, producing values like 1.1 in the
+    API response which was confusing.  The clamping is safe because
+    final_comparative_score is computed from RAW base_scores + additional_scores,
+    not from these display scores — so no information is lost.
+    """
     skills: float = Field(ge=0.0, le=1.0)
     experience: float = Field(ge=0.0, le=1.0)
     education: float = Field(ge=0.0, le=1.0)
@@ -113,114 +109,60 @@ class CategoryScores(BaseModel):
 # ==================== MATCHING RESULT (SINGLE CANDIDATE) ====================
 
 class MatchingResult(BaseModel):
-    """Complete matching result for ONE candidate against ONE job"""
-    
-    # Identifiers
-    candidate_id: str = Field(description="Unique candidate/resume ID")
-    job_id: str = Field(description="Unique job ID")
-    
-    # Timestamps
+    """Complete matching result for ONE candidate against ONE job."""
+
+    candidate_id: str
+    job_id: str
     matched_at: datetime = Field(default_factory=datetime.utcnow)
-    
-    # Base matching (your current system)
+
     base_scores: BaseScores
-    
-    # Excess metrics (raw counts/values)
     excess_metrics: ExcessMetrics
-    
-    # Additional scores (normalized across all candidates) - ONLY for comparative ranking
+
     additional_scores: Optional[AdditionalScores] = Field(
         None,
-        description="Only populated when doing comparative ranking"
+        description="[-1, +1] tiebreaker scores. Only set during batch ranking."
     )
-    
-    # Combined scores (only for comparative ranking)
+
     category_scores: Optional[CategoryScores] = Field(
         None,
-        description="base + additional combined, only for comparative ranking"
+        description="Display scores clamped to [0, 1]. Only set during batch ranking."
     )
-    
-    # Final scores
+
     final_base_score: float = Field(
         ge=0.0, le=1.0,
-        description="Weighted final from base scores only"
+        description="Weighted sum of base_scores only. Always in [0, 1]."
     )
-    
+
     final_comparative_score: Optional[float] = Field(
         None,
         ge=0.0, le=1.0,
-        description="Final score including additional bonuses (comparative ranking)"
+        description="Final score including tiebreaker. Always in [0, 1]."
     )
-    
-    # Ranking (only meaningful in batch context)
-    rank: Optional[int] = Field(None, description="Rank among all candidates")
-    
-    # Status
-    is_qualified: bool = Field(description="Meets minimum requirements (base_score >= threshold)")
+
+    rank: Optional[int] = Field(None, description="Rank among all candidates (1 = best)")
+
+    is_qualified: bool
     qualification_threshold: float = Field(default=0.70)
-    
-    # Metadata
-    matching_preferences: Optional[Dict] = Field(
-        None,
-        description="Weights used for this match"
-    )
+    matching_preferences: Optional[Dict] = Field(None)
 
 
-# ==================== BATCH RESULT (MULTIPLE CANDIDATES) ====================
+# ==================== BATCH RESULT ====================
 
 class ComparativeRankingResult(BaseModel):
-    """Result of comparative ranking for multiple candidates"""
-    
+    """Result of comparative ranking for multiple candidates."""
     job_id: str
     total_candidates: int
     ranked_at: datetime = Field(default_factory=datetime.utcnow)
-    
-    # All candidates with their results
     candidates: List[MatchingResult]
-    
-    # Normalization metadata (for transparency)
-    normalization_stats: Dict = Field(
-        description="Min/max values used for normalization per category"
-    )
-    
-    # Configuration used
-    base_weight: float = Field(default=0.70)
-    additional_weight: float = Field(default=0.30)
-    
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "job_id": "job_456",
-                "total_candidates": 10,
-                "candidates": [
-                    {
-                        "candidate_id": "123",
-                        "rank": 1,
-                        "final_comparative_score": 0.823
-                    }
-                ]
-            }
-        }
+    normalization_stats: Dict
+    base_weight: float = Field(default=0.90)
+    additional_weight: float = Field(default=0.10)
 
 
 # ==================== NORMALIZATION STATS ====================
 
 class NormalizationStats(BaseModel):
-    """Statistics used for normalizing excess metrics"""
-    
-    education: Dict[str, float] = Field(
-        description="{'min': 0, 'max': 3, 'mean': 1.2}"
-    )
+    education: Dict[str, float]
     skills: Dict[str, float]
     experience: Dict[str, float]
     certifications: Dict[str, float]
-    
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "education": {"min": 0, "max": 3, "mean": 1.2, "median": 1},
-                "skills": {"min": 0, "max": 15, "mean": 6.5, "median": 5},
-                "experience": {"min": 0, "max": 10, "mean": 3.2, "median": 2},
-                "certifications": {"min": 0, "max": 5, "mean": 1.8, "median": 1}
-            }
-        }

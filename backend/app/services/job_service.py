@@ -5,7 +5,7 @@ from app.extractors.extractor import RawJobExtractor
 from app.extractors.structured_extractor import StructuredJobExtractor
 from app.extractors.skill_extractor import SkillExtractor
 from app.extractors.education_extractor import run_education_parser
-
+from fastapi import HTTPException
 logger = get_logger("JobService")
 
 
@@ -72,3 +72,5 @@ class JobService:
                 "error": str(e)
             })
             raise
+        
+    

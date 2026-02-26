@@ -33,6 +33,7 @@ CRITICAL: Analyze the resume holistically and determine the PRIMARY industry dom
 
 RULES:
 - Look at job titles, company types, skills, and responsibilities
+- The LLM must analyze the full resume_text and extract all explicitly stated skills from any section, including professional summary, work experience, projects, and skills sections and any other section. Do not infer skills. Only extract those clearly mentioned in the text.
 - Choose the MOST PROMINENT domain across their career
 - If mixed experience, choose the domain with most recent/longest tenure
 - Be specific: prefer "Pharmaceutical" over generic "Healthcare" when appropriate

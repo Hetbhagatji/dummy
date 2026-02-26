@@ -17,3 +17,5 @@ torch
 numpy
 scikit-learn
 python-json-logger
+localstack
+boto3

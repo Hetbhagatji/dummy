@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import Optional,List
 from .location import Location
+from app.schemas.job_schema import SkillRequirement
 class WorkExperience(BaseModel):
     job_title: Optional[str] = Field(
         None,
@@ -21,6 +22,7 @@ class WorkExperience(BaseModel):
         default_factory=list,
         description="Responsibilities and achievements for any role"
     )
+    skills : Optional[List[SkillRequirement]] = None
     total_experience_months:Optional[int]= None
     total_experience_years:Optional[float]= None
     extracted_keywords: Optional[List[str]]= None
