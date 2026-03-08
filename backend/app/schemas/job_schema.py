@@ -77,7 +77,6 @@ class CertificationRequirements(BaseModel):
 class SkillRequirement(BaseModel):
     skill_name: str
     category: Optional[str] = Field(None, description="Programming Language, Framework, DevOps, Database")
-    min_experience_years: Optional[float] = None
     
 class SkillGroup(BaseModel):
     group_id: Optional[str] = None

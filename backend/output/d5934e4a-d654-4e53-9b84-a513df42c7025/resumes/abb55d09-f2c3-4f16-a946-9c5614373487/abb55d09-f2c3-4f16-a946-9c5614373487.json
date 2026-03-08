@@ -1,0 +1,169 @@
+{
+    "resume_id": "abb55d09-f2c3-4f16-a946-9c5614373487",
+    "personal_info": {
+        "full_name": "John Walker",
+        "contact": {
+            "email": "12345551234",
+            "phone": null,
+            "linkedin": "linkedin.com",
+            "location": {
+                "city": "Dallas",
+                "state": "Texas",
+                "country": null
+            }
+        },
+        "professional_summary": "Dedicated investment banking analyst with over 2 years of experience in financial modeling and successful M&A transactions. Proficient in Excel and PowerPoint, my notable achievement includes securing $500M in deals. Eager to leverage my analytical skills and passion for finance in a dynamic environment."
+    },
+    "education": {
+        "entries": [
+            {
+                "degree_level": "Bachelor's",
+                "degree_name": "Bachelor of Science",
+                "field": [
+                    "Finance"
+                ],
+                "institution": "University of Texas at Austin",
+                "location": {
+                    "city": "Austin",
+                    "state": "Texas",
+                    "country": null
+                },
+                "start_date": "2016-01",
+                "end_date": "2020-01",
+                "grade": null,
+                "achievements": []
+            }
+        ]
+    },
+    "experience": {
+        "experience_areas": [
+            {
+                "job_title": "Investment Banking Analyst",
+                "company_name": "Goldman Sachs",
+                "location": {
+                    "city": "New York",
+                    "state": "NY",
+                    "country": null
+                },
+                "employment_type": null,
+                "start_date": "2021-07",
+                "end_date": "current",
+                "responsibilities": [
+                    "Conducted in-depth valuation analysis using discounted cash flow and transaction comparables, resulting in securing two significant M&A deals worth over $500M.",
+                    "Developed detailed financial models to evaluate varying capital structures, enhancing strategic decision-making for a portfolio company worth $300M.",
+                    "Prepared and delivered client presentations that supported the origination of equity and debt services, increasing revenue streams by 15%.",
+                    "Performed thorough market research and analysis for potential capital offerings, contributing to the successful launch of multiple insurance-linked securities.",
+                    "Collaborated with senior analysts on execution of pitch books and presentations, resulting in a 20% increase in successful client conversions.",
+                    "Assumed high-priority roles in executing transactions from initial contact to closing, increasing personal contribution to team output by 30%"
+                ],
+                "skills": [],
+                "total_experience_months": 56,
+                "total_experience_years": 4.7,
+                "extracted_keywords": [
+                    "M&A",
+                    "Financial Modeling",
+                    "Valuation Analysis",
+                    "Discounted Cash Flow",
+                    "Transaction Comparables",
+                    "Capital Structures",
+                    "Equity",
+                    "Debt Services",
+                    "Market Research",
+                    "Insurance-Linked Securities",
+                    "Pitch Books",
+                    "Presentations"
+                ]
+            },
+            {
+                "job_title": "Investment Analyst Intern",
+                "company_name": "Citi",
+                "location": {
+                    "city": "Dallas",
+                    "state": "TX",
+                    "country": null
+                },
+                "employment_type": null,
+                "start_date": "2020-06",
+                "end_date": "2021-06",
+                "responsibilities": [
+                    "Assisted in the preparation of financial analysis and company profiling, supporting the senior analysts on a critical IPO project worth $150M.",
+                    "Supported development of marketing documents, facilitating the team in reaching new clientele and expanding the company's client base by 10%.",
+                    "Performed various analyses for new business generation, achieving a structured approach to identify viable prospects for future growth.",
+                    "Built financial models to analyze performance scenarios, empowering decision-making processes that led to improved transaction outcomes.",
+                    "Managed key tasks in time-sensitive environments, upholding stringent deadlines effectively and increasing output by 20%"
+                ],
+                "skills": [],
+                "total_experience_months": 12,
+                "total_experience_years": 1.0,
+                "extracted_keywords": [
+                    "IPO",
+                    "Financial Analysis",
+                    "Company Profiling",
+                    "Marketing Documents",
+                    "Business Generation",
+                    "Financial Models",
+                    "Performance Scenarios",
+                    "Decision-Making"
+                ]
+            }
+        ]
+    },
+    "skills": {
+        "skills": [
+            {
+                "skill_name": "Financial Modeling",
+                "category": "Financial Analysis",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Valuation Techniques",
+                "category": "Financial Analysis",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Microsoft Excel",
+                "category": "Software",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Business Analytics",
+                "category": "Data Analysis",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Mergers & Acquisitions",
+                "category": "Finance",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Microsoft PowerPoint",
+                "category": "Software",
+                "min_experience_years": null
+            }
+        ],
+        "soft_skills": null
+    },
+    "certifications": {
+        "entries": [
+            {
+                "certification_name": "Financial Modeling and Valuation Analyst",
+                "issuing_body": "Corporate Finance Institute"
+            },
+            {
+                "certification_name": "Advanced Excel for Financial Modeling",
+                "issuing_body": "Wall Street Prep"
+            }
+        ]
+    },
+    "raw_text": "## JOHN WALKER\n\nInvestment Banking Analyst | Financial Models | M&amp;A\n\n12345551234 Email linkedin.com Dallas, Texas Extra Field E \ue069 q \ue092 s\n\n## SUMMARY\n\nDedicated investment banking analyst with over 2 years of experience in financial modeling and successful M&amp;A transactions. Proficient in Excel and PowerPoint, my notable achievement includes securing $500M in deals. Eager to leverage my analytical skills and passion for finance in a dynamic environment.\n\n## EXPERIENCE\n\n## Investment Banking Analyst\n\n## Goldman Sachs\n\n07/2021  Present\n\n- New York, NY\n- Conducted in-depth valuation analysis using discounted cash flow and transaction comparables, resulting in securing two significant M&amp;A deals worth over $500M. \u00b7\n- Developed detailed financial models to evaluate varying capital structures, enhancing strategic decision-making for a portfolio company worth $300M. \u00b7\n- Prepared and delivered client presentations that supported the origination of equity and debt services, increasing revenue streams by 15%. \u00b7\n- Performed thorough market research and analysis for potential capital offerings, contributing to the successful launch of multiple insurance-linked securities. \u00b7\n- Collaborated with senior analysts on execution of pitch books and presentations, resulting in a 20% increase in successful client conversions. \u00b7\n- Assumed high-priority roles in executing transactions from initial contact to closing, increasing personal contribution to team output by 30% \u00b7\n\n## Investment Analyst Intern\n\n## Citi\n\n06/2020  06/2021\n\n- Dallas, TX\n\n- Assisted in the preparation of financial analysis and company profiling, supporting the senior analysts on a critical IPO project worth $150M. \u00b7\n- Supported development of marketing documents, facilitating the team in reaching new clientele and expanding the company's client base by 10%. \u00b7\n- Performed various analyses for new business generation, achieving a structured approach to identify viable prospects for future growth. \u00b7\n- Built financial models to analyze performance scenarios, empowering decision-making processes that led to improved transaction outcomes. \u00b7\n- Managed key tasks in time-sensitive environments, upholding stringent deadlines effectively and increasing output by 20%. \u00b7\n\n## EDUCATION\n\n## Bachelor of Science in Finance\n\n## University of Texas at Austin\n\n01/2016  01/2020\n\nAustin, TX\n\n<!-- image -->\n\nwww.enhancv.com\n\n## KEY ACHIEVEMENTS\n\n<!-- image -->\n\n## Enhanced Team Output and Efficiency &amp;\n\nDrove a 30% increase in team output by streamlining processes and leveraging financial models in decisionmaking.\n\n<!-- image -->\n\n<!-- image -->\n\nk\n\n## Successful Client Conversion\n\nContributed to a 20% increase in successful client conversions through strategic presentations and effective communication.\n\n## Impactful IPO Support\n\nPlayed a pivotal role in a $150M IPO project by delivering precise financial analysis and support, contributing to its success.\n\n## Expanded Client Base\n\n<!-- image -->\n\nSupported new client acquisition strategies, expanding the client base by 10% through persistent business development efforts.\n\n## SKILLS\n\nFinancial Modeling, Valuation Techniques, Microsoft Excel, Business Analytics, Mergers &amp; Acquisitions, Microsoft PowerPoint\n\n## TRAINING / COURSES\n\n## Financial Modeling and Valuation Analyst\n\nCorporate Finance Institute, 2021\n\n## Advanced Excel for Financial Modeling\n\nWall Street Prep, 2020\n\n<!-- image -->\n\n\ue06d\n\n## LANGUAGES\n\n## English\n\nNative\n\n<!-- image -->\n\n## INTERESTS\n\n## Financial Markets Analysis\n\nEnthusiastic about dissecting global financial markets and deriving insights for strategic decision-making.\n\n## Photography\n\nPassionate about capturing landscapes, experimenting with light, and preserving moments through photography.\n\n<!-- image -->\n\nwww.enhancv.com\n\n## Spanish\n\nAdvanced\n\n## Traveling\n\nEnjoy exploring diverse cultures and understanding global economic impacts firsthand.\n\n<!-- image -->\n\n<!-- image -->\n\n<!-- image -->\n\n<!-- image -->\n\n\ue06d",
+    "parsed_date": "2026-03-08 10:24:37.802504+00:00",
+    "job_metadata": {
+        "job_title": "Investment Banking Analyst",
+        "industry": "Finance",
+        "employment_type": null,
+        "work_mode": null
+    },
+    "industry": "Finance",
+    "job_id": "d5934e4a-d654-4e53-9b84-a513df42c7025",
+    "resume_name": "abb55d09-f2c3-4f16-a946-9c5614373487"
+}

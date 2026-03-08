@@ -51,43 +51,43 @@
                 "mandatory": true,
                 "skills": [
                     {
-                        "skill_name": "React.js",
-                        "category": "Frontend Framework",
+                        "skill_name": "React",
+                        "category": "Frontend",
                         "min_experience_years": null
                     },
                     {
                         "skill_name": "Spring Boot",
-                        "category": "Backend Framework",
+                        "category": "Backend",
                         "min_experience_years": null
                     },
                     {
                         "skill_name": "HTML",
-                        "category": "Markup Language",
+                        "category": "Frontend",
                         "min_experience_years": null
                     },
                     {
                         "skill_name": "CSS",
-                        "category": "Styling Language",
+                        "category": "Frontend",
                         "min_experience_years": null
                     },
                     {
                         "skill_name": "JavaScript",
-                        "category": "Programming Language",
+                        "category": "Frontend",
                         "min_experience_years": null
                     },
                     {
                         "skill_name": "MySQL",
-                        "category": "Relational Database",
+                        "category": "Database",
                         "min_experience_years": null
                     },
                     {
                         "skill_name": "PostgreSQL",
-                        "category": "Relational Database",
+                        "category": "Database",
                         "min_experience_years": null
                     },
                     {
                         "skill_name": "MongoDB",
-                        "category": "NoSQL Database",
+                        "category": "Database",
                         "min_experience_years": null
                     },
                     {
@@ -97,7 +97,7 @@
                     },
                     {
                         "skill_name": "AWS",
-                        "category": "Cloud Platform",
+                        "category": "Cloud",
                         "min_experience_years": null
                     }
                 ]
@@ -114,28 +114,33 @@
                         "min_experience_years": null
                     },
                     {
-                        "skill_name": "Microservices Architecture",
+                        "skill_name": "Microservices",
                         "category": null,
                         "min_experience_years": null
                     },
                     {
-                        "skill_name": "Agile/Scrum",
+                        "skill_name": "Agile",
+                        "category": null,
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Scrum",
                         "category": null,
                         "min_experience_years": null
                     },
                     {
                         "skill_name": "JUnit",
-                        "category": "Testing Framework",
+                        "category": "Testing",
                         "min_experience_years": null
                     },
                     {
                         "skill_name": "Mockito",
-                        "category": "Testing Framework",
+                        "category": "Testing",
                         "min_experience_years": null
                     },
                     {
                         "skill_name": "Jest",
-                        "category": "Testing Framework",
+                        "category": "Testing",
                         "min_experience_years": null
                     }
                 ]

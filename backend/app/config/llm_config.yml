@@ -1,2 +1,2 @@
 # config.yaml
-llm_model: "GrokLLM"
+llm_model: "grokllm"

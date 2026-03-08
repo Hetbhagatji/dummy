@@ -1,13 +1,21 @@
 import json
 from typing import Any
 from pydantic import ValidationError
-
+from fastapi import Path
+import yaml
 from app.llm_models.client import get_groq_client
 from app.prompts.job_prompt import get_structured_parsing_prompt
 from app.schemas.job_schema import Job
 from app.schemas.raw_schemas import RawJobData
 from app.utils.clean_json import clean_llm_json
 
+# CONFIG_PATH = Path(__file__).resolve().parent.parent / "config" / "llm_config.yml"
+
+# def load_config():
+#     with open(CONFIG_PATH, "r") as f:
+#         return yaml.safe_load(f)
+
+# config = load_config()
 
 class StructuredJobExtractor:
     def __init__(self, model_name: str = "llama-3.3-70b-versatile"):

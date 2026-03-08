@@ -19,3 +19,5 @@ scikit-learn
 python-json-logger
 localstack
 boto3
+pdfplumber
+pika

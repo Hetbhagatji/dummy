@@ -1,0 +1,14 @@
+{
+    "resume_name": "resume_2",
+    "job_id": "JOB123",
+    "rank": 1,
+    "category_scores": {
+        "skills": 0.421,
+        "experience": 0.0,
+        "education": 0.0,
+        "certifications": 0.0,
+        "responsibilities": 0.094
+    },
+    "final_base_score": 0.215,
+    "final_comparative_score": 0.169
+}

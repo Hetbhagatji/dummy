@@ -16,6 +16,9 @@ from app.matching.similarity_matcher import SimilarityMatcher
 import os
 import json
 from app.schemas.matching_preferences import MatchingPreferences
+from app.messaging.rabbitmq_publisher import publish_event
+from app.messaging import events as ev
+from app.messaging import payloads as pl   
 class MatchingService:
     def __init__(self):
         self.encoder = SentenceEmbeddingModel()
@@ -166,94 +169,89 @@ class MatchingService:
 
         return ranked
     
+    def _load_json_from_file(self, file_path: str):
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    
     def rank_candidates_for_job(
-    self,
-    job_id: str,
-    base_weight: float = 0.90,
-    additional_weight: float = 0.10,
-    preferences: MatchingPreferences = None
-) -> dict:
-        """
-        Local → S3 Hybrid Flow:
-        - Reads job.json from local folder: backend/output/{job_id}/job.json
-        - Reads resume JSONs from local folder:
-            backend/output/{job_id}/resumes/{resume_name}/{resume_name}.json
-        - Runs matching + comparative ranking
-        - Uploads ONLY {resume_name}_scores.json to S3 bucket
-        - Returns full ranking response with file names
-        """
+        self,
+        job_id: str,
+        base_weight: float = 0.90,
+        additional_weight: float = 0.10,
+        preferences: MatchingPreferences = None
+    ) -> dict:
 
-        # ─────────────────────────────────────────────────────────────
-        # 1️⃣ Load job.json from LOCAL
-        # ─────────────────────────────────────────────────────────────
+        # ── 1. Load job.json ──────────────────────────────────────────────────────
         base_path = os.path.join("output", job_id)
-        job_path = os.path.join(base_path, "job.json")
+        job_path  = os.path.join(base_path, "job.json")
 
         if not os.path.exists(job_path):
-            raise HTTPException(
-                status_code=404,
-                detail=f"job.json not found locally at '{job_path}'"
-            )
+            raise HTTPException(status_code=404, detail=f"job.json not found at '{job_path}'")
 
         try:
             job_data = self._load_json_from_file(job_path)
-            job = Job(**job_data)
+            job      = Job(**job_data)
+            jd_id    = job_data.get("jd_id", "")       # pull jdId from job.json
         except Exception as e:
-            raise HTTPException(
-                status_code=500,
-                detail=f"Failed to load local job.json. Error: {str(e)}"
-            )
+            raise HTTPException(status_code=500, detail=f"Failed to load job.json: {e}")
 
-        # ─────────────────────────────────────────────────────────────
-        # 2️⃣ Load all resume JSONs from LOCAL
-        # ─────────────────────────────────────────────────────────────
+        # ── 2. Load resumes ───────────────────────────────────────────────────────
         resumes_dir = os.path.join(base_path, "resumes")
 
         if not os.path.exists(resumes_dir):
-            raise HTTPException(
-                status_code=404,
-                detail=f"Resumes folder not found at '{resumes_dir}'"
-            )
+            raise HTTPException(status_code=404, detail=f"Resumes folder not found at '{resumes_dir}'")
 
         resumes: List[Resume] = []
 
         for resume_folder in os.listdir(resumes_dir):
-            resume_json_path = os.path.join(
-                resumes_dir,
-                resume_folder,
-                f"{resume_folder}.json"
-            )
-
+            resume_json_path = os.path.join(resumes_dir, resume_folder, f"{resume_folder}.json")
             if os.path.exists(resume_json_path):
                 try:
                     resume_data = self._load_json_from_file(resume_json_path)
                     resume_data["resume_name"] = resume_folder
                     resumes.append(Resume(**resume_data))
-
                 except Exception as e:
-                    raise HTTPException(
-                        status_code=500,
-                        detail=f"Failed to load resume '{resume_folder}'. Error: {str(e)}"
-                    )
+                    raise HTTPException(status_code=500, detail=f"Failed to load resume '{resume_folder}': {e}")
 
         if not resumes:
-            raise HTTPException(
-                status_code=404,
-                detail=f"No resume JSON files found locally under '{resumes_dir}'"
-            )
+            raise HTTPException(status_code=404, detail=f"No resume JSONs found under '{resumes_dir}'")
 
-        # ─────────────────────────────────────────────────────────────
-        # 3️⃣ Run Matching
-        # ─────────────────────────────────────────────────────────────
+        # ── 3. Load + init summary.json ───────────────────────────────────────────
+        summary_path = os.path.join(base_path, "summary.json")
+
+        if not os.path.exists(summary_path):
+            raise HTTPException(status_code=404, detail=f"summary.json not found at '{summary_path}'")
+
+        with open(summary_path, "r", encoding="utf-8") as f:
+            summary = json.load(f)
+
+        total_resumes = len(resumes)
+        summary["jd_resume_matching"]["total"]     = total_resumes
+        summary["jd_resume_matching"]["completed"] = 0
+
+        with open(summary_path, "w", encoding="utf-8") as f:
+            json.dump(summary, f, indent=4)
+
+        # ── 4. Publish RESUMES_MATCHING_STARTED ───────────────────────────────────
+        publish_event(ev.RESUMES_MATCHING_STARTED,
+            pl.resumes_matching_started(job_id, jd_id, total_resumes))
+
+        # ── 5. Run matching — publish per-resume events ───────────────────────────
         matching_results: List[MatchingResult] = []
 
-        for resume in resumes:
+        for index, resume in enumerate(resumes, start=1):
+
+            resume_id = resume.resume_name
+
+            # RESUME_MATCHING_STARTED
+            publish_event(ev.RESUME_MATCHING_STARTED,
+                pl.resume_matching_started(job_id, jd_id, resume_id, index))
+
+            # actual matching
             result = self.matcher.compute_final_score_with_excess(resume, job)
             matching_results.append(result)
 
-        # ─────────────────────────────────────────────────────────────
-        # 4️⃣ Rank Candidates
-        # ─────────────────────────────────────────────────────────────
+        # ── 6. Rank all candidates ────────────────────────────────────────────────
         ranked_candidates, norm_stats = ComparativeScorer.rank_candidates(
             matching_results,
             base_weight=base_weight,
@@ -261,14 +259,13 @@ class MatchingService:
             category_weights=preferences.to_category_weights() if preferences else None
         )
 
-        # ─────────────────────────────────────────────────────────────
-        # 5️⃣ Upload ONLY category_scores to S3
-        # ─────────────────────────────────────────────────────────────
+        # ── 7. Save scores locally + publish per-resume COMPLETED events ──────────
+        completed_count = 0
+        full_ranking    = []
+
         for candidate in ranked_candidates:
 
-            resume_name = candidate.candidate_id
-
-            scores_s3_key = f"{job_id}/resumes/{resume_name}/{resume_name}_scores.json"
+            resume_id = candidate.candidate_id
 
             category_scores = (
                 candidate.category_scores.dict()
@@ -276,43 +273,55 @@ class MatchingService:
                 else candidate.category_scores
             )
 
-            scores_payload = {
-                "resume_name": resume_name,
-                "job_id": job_id,
-                "rank": candidate.rank,
-                "category_scores": category_scores
+            # ── build the candidate result dict (this is what goes in the event) ──
+            candidate_result = {
+                "rank":                    candidate.rank,
+                "resumeId":                resume_id,
+                "resumeJson":              f"{resume_id}/{resume_id}.json",
+                "scoresJson":              f"{resume_id}_scores.json",
+                "baseScores":              candidate.base_scores.dict(),
+                "categoryScores":          category_scores,
+                "finalBaseScore":          candidate.final_base_score,
+                "finalComparativeScore":   candidate.final_comparative_score,
+                "excessMetrics":           candidate.excess_metrics.dict(),
             }
 
-            try:
-                self.s3_service.upload_json(scores_payload, scores_s3_key)
-            except Exception as e:
-                self.logger.warning({
-                    "event": "scores_upload_failed",
-                    "resume_name": resume_name,
-                    "error": str(e)
-                })
+            full_ranking.append(candidate_result)
 
-        # ─────────────────────────────────────────────────────────────
-        # 6️⃣ Return Full Ranking Response with File Names
-        # ─────────────────────────────────────────────────────────────
+            # ── Save scores locally ───────────────────────────────────────────────
+            local_scores_path = os.path.join(
+                "output", job_id, "resumes", resume_id, f"{resume_id}_scores.json"
+            )
+            os.makedirs(os.path.dirname(local_scores_path), exist_ok=True)
+
+            with open(local_scores_path, "w", encoding="utf-8") as f:
+                json.dump(candidate_result, f, indent=4)
+
+            # ── Update summary ────────────────────────────────────────────────────
+            completed_count += 1
+            summary["jd_resume_matching"]["completed"] = completed_count
+
+            with open(summary_path, "w", encoding="utf-8") as f:
+                json.dump(summary, f, indent=4)
+
+            # ── RESUME_MATCHING_COMPLETED — full candidate payload ────────────────
+            publish_event(ev.RESUME_MATCHING_COMPLETED,
+                pl.resume_matching_completed(
+                    job_id           = job_id,
+                    jd_id            = jd_id,
+                    resume_id        = resume_id,
+                    index            = completed_count,
+                    candidate_result = candidate_result,   # ← full dict
+                ))
+
+        # ── 8. Publish RESUMES_MATCHING_COMPLETED — full ranking ─────────────────
+        publish_event(ev.RESUMES_MATCHING_COMPLETED,
+            pl.resumes_matching_completed(job_id, jd_id, total_resumes, full_ranking))
+
+        # ── 9. Return response ────────────────────────────────────────────────────
         return {
-            "total_candidates": len(ranked_candidates),
-            "job_id": job_id,
-            "ranking": [
-                {
-                    "rank": candidate.rank,
-                    "resume_json": f"{candidate.candidate_id}/{candidate.candidate_id}.json",
-                    "scores_json": f"{candidate.candidate_id}_scores.json",
-                    "base_scores": candidate.base_scores.dict(),
-                    "category_scores": candidate.category_scores.dict() if candidate.category_scores else None,
-                    "final_base_score": candidate.final_base_score,
-                    "final_comparative_score": candidate.final_comparative_score,
-                    "excess_metrics": candidate.excess_metrics.dict()
-                }
-                for candidate in ranked_candidates
-            ]
+            "jobId":           job_id,
+            "jdId":            jd_id,
+            "totalCandidates": len(ranked_candidates),
+            "ranking":         full_ranking,
         }
-
-    def _load_json_from_file(self, file_path: str):
-        with open(file_path, "r", encoding="utf-8") as f:
-            return json.load(f)

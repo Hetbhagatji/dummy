@@ -1,0 +1,12 @@
+{
+    "job_id": "d5934e4a-d654-4e53-9b84-a513df42c702",
+    "jd_parsing": 1,
+    "resume_parsing": {
+        "completed": 1,
+        "total": 2
+    },
+    "jd_resume_matching": {
+        "completed": 0,
+        "total": 2
+    }
+}

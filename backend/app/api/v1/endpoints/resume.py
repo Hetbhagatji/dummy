@@ -53,33 +53,9 @@ def parse_resume(file: UploadFile = File(...)):
     return resume_service.parse_resume(file)
 
 # ── New API: upload resumes for a specific job ───────────────────────────────
-@router.post("/upload-resumes/{job_id}")
+@router.post("/extract-resumes/{job_id}")
 def upload_resumes(
     job_id: str
 ):
     return resume_service.upload_resumes_for_job(job_id=job_id)
 
-
-@router.post("/extract-resumes/{job_id}")
-def extract_resumes(job_id: str):
-    prefix = f"{job_id}/resumes/"
-    pdf_keys = [obj["Key"] for obj in s3_service.list_files(prefix) if obj["Key"].endswith(".pdf")]
-
-    results = []
-
-    for pdf_key in pdf_keys:
-        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
-            tmp_path = tmp.name
-
-        s3_service.download_file(pdf_key, tmp_path)
-
-        text = extract_text_from_pdf(tmp_path)  # ← your docling extractor
-
-        os.remove(tmp_path)
-
-        txt_key = pdf_key.replace(".pdf", ".txt")
-        s3_service.upload_text(text, txt_key)
-
-        results.append({"pdf": pdf_key, "txt": txt_key})
-
-    return {"job_id": job_id, "processed": results}
