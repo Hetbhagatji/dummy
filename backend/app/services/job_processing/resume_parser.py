@@ -31,7 +31,7 @@ class ResumeParser:
             for idx, item in enumerate(resumes, start=1)
         ]
 
-    def _parse_one(
+    def parse_one(
         self,
         drive_id: str,
         jd_id: str,
@@ -82,6 +82,6 @@ class ResumeParser:
             "resumeId":    resume_id,
             "filename":    filename,
             "status":      "success",
-            "resume_dict": resume_obj,
+            "resume_dict": resume_dict,
             "resume_path": resume_path,   # caller decides what to do with path
         }

@@ -1,0 +1,13 @@
+{
+    "job_id": "d129",
+    "jd_id": "7943ef68-40c7-407a-b41b-f99f7730513e",
+    "jd_parsing": 1,
+    "resume_parsing": {
+        "completed": 2,
+        "total": 2
+    },
+    "jd_resume_matching": {
+        "completed": 2,
+        "total": 2
+    }
+}

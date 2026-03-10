@@ -1,0 +1,123 @@
+{
+    "driveId": "d129",
+    "jdId": "7943ef68-40c7-407a-b41b-f99f7730513e",
+    "status": "success",
+    "totalCandidates": 2,
+    "ranking": [
+        {
+            "rank": 1,
+            "resumeId": "7943ef68-40c7-407a-b41b-f99f7730513e",
+            "jobId": "d129",
+            "jdId": "7943ef68-40c7-407a-b41b-f99f7730513e",
+            "resumeJson": "7943ef68-40c7-407a-b41b-f99f7730513e/7943ef68-40c7-407a-b41b-f99f7730513e.json",
+            "scoresJson": "7943ef68-40c7-407a-b41b-f99f7730513e_scores.json",
+            "baseScores": {
+                "skills": 0.0,
+                "experience": 0.0,
+                "education": 0.0,
+                "certifications": 0.0,
+                "responsibilities": 0.0
+            },
+            "categoryScores": {
+                "skills": 0.0,
+                "experience": 0.1,
+                "education": 0.0,
+                "certifications": 0.0,
+                "responsibilities": 0.0
+            },
+            "finalBaseScore": 0.0,
+            "finalComparativeScore": 0.025,
+            "excessMetrics": {
+                "education": {
+                    "required_degrees": 1,
+                    "candidate_degrees": 2,
+                    "excess_count": 1,
+                    "degree_levels": [
+                        "Master's",
+                        "Bachelor's"
+                    ]
+                },
+                "skills": {
+                    "required_skills_count": 15,
+                    "matched_skills_count": 6,
+                    "matched_required_count": 0,
+                    "missing_required_count": 15,
+                    "bonus_skills_count": 6,
+                    "excess_count": -9
+                },
+                "experience": {
+                    "required_years": 2.0,
+                    "candidate_years": 10.9,
+                    "excess_years": 8.9,
+                    "required_areas": 1,
+                    "matched_areas": 0,
+                    "excess_areas": -1
+                },
+                "certifications": {
+                    "required_certs": 1,
+                    "candidate_certs": 2,
+                    "excess_count": 1,
+                    "extra_certs": null
+                }
+            },
+            "scores_path": "output\\d129\\resumes\\7943ef68-40c7-407a-b41b-f99f7730513e\\7943ef68-40c7-407a-b41b-f99f7730513e_scores.json"
+        },
+        {
+            "rank": 2,
+            "resumeId": "abb55d09-f2c3-4f16-a946-9c5614373487",
+            "jobId": "d129",
+            "jdId": "7943ef68-40c7-407a-b41b-f99f7730513e",
+            "resumeJson": "abb55d09-f2c3-4f16-a946-9c5614373487/abb55d09-f2c3-4f16-a946-9c5614373487.json",
+            "scoresJson": "abb55d09-f2c3-4f16-a946-9c5614373487_scores.json",
+            "baseScores": {
+                "skills": 0.0,
+                "experience": 0.0,
+                "education": 0.0,
+                "certifications": 0.0,
+                "responsibilities": 0.0
+            },
+            "categoryScores": {
+                "skills": 0.0,
+                "experience": 0.0,
+                "education": 0.0,
+                "certifications": 0.0,
+                "responsibilities": 0.0
+            },
+            "finalBaseScore": 0.0,
+            "finalComparativeScore": 0.0,
+            "excessMetrics": {
+                "education": {
+                    "required_degrees": 1,
+                    "candidate_degrees": 1,
+                    "excess_count": 0,
+                    "degree_levels": [
+                        "Bachelor's"
+                    ]
+                },
+                "skills": {
+                    "required_skills_count": 15,
+                    "matched_skills_count": 6,
+                    "matched_required_count": 0,
+                    "missing_required_count": 15,
+                    "bonus_skills_count": 6,
+                    "excess_count": -9
+                },
+                "experience": {
+                    "required_years": 2.0,
+                    "candidate_years": 5.7,
+                    "excess_years": 3.7,
+                    "required_areas": 1,
+                    "matched_areas": 0,
+                    "excess_areas": -1
+                },
+                "certifications": {
+                    "required_certs": 1,
+                    "candidate_certs": 2,
+                    "excess_count": 1,
+                    "extra_certs": null
+                }
+            },
+            "scores_path": "output\\d129\\resumes\\abb55d09-f2c3-4f16-a946-9c5614373487\\abb55d09-f2c3-4f16-a946-9c5614373487_scores.json"
+        }
+    ]
+}

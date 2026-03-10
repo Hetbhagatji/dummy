@@ -60,8 +60,8 @@ class JDParser:
             return {"status": "failed", "error": str(e)}
 
         job_dict = parsed_job.dict() if hasattr(parsed_job, "dict") else parsed_job
-        job_dict["job_id"] = drive_id
-        job_dict["jd_id"]  = jd_id
+        job_dict["job_id"] = jd_id
+        # job_dict["jd_id"]  = jd_id
 
         return {
             "status":   "success",

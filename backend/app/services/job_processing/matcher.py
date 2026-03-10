@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import List
 
 from fastapi import HTTPException
+import json
 
 from app.matching.similarity_matcher import SimilarityMatcher
 from app.services.comparative_scorer import ComparativeScorer
@@ -20,34 +21,21 @@ class MatchingOrchestrator:
     def __init__(self):
         self.matcher = SimilarityMatcher()
 
-    # ── Step A: match each resume individually, return list of MatchingResult ──
+    def match_one(self, resume_dict: dict, job_dict: dict) -> MatchingResult:
+        resume_dict_clean = json.loads(json.dumps(resume_dict, default=str))
+        job_dict_clean    = json.loads(json.dumps(job_dict, default=str))
 
-    def match_all(
-        self,
-        resume_dicts: list,
-        job_dict: dict,
-    ) -> list[MatchingResult]:
-        """
-        Runs SimilarityMatcher on every resume independently.
-        Returns one MatchingResult per resume — NO ranking yet.
-        Caller emits RESUME_MATCHING_STARTED / COMPLETED around each item.
-        """
-        results = []
-        for resume_data in resume_dicts:
-            result = self.matcher.compute_final_score_with_excess(
-                resume_data, job_dict
-            )
-            results.append(result)
-        return results
-
-    # ── Step B: rank already-matched results, build the output list ───────────
+        resume = Resume(**resume_dict_clean)
+        job    = Job(**job_dict_clean)
+        """Match a single resume. Caller handles the loop and events."""
+        return self.matcher.compute_final_score_with_excess(resume, job)
 
     def rank_all(
         self,
         drive_id: str,
         jd_id: str,
         resumes_folder: Path,
-        matching_results: list[MatchingResult],
+        matching_results: list,
         base_weight: float,
         additional_weight: float,
         preferences: MatchingPreferences,
@@ -59,14 +47,12 @@ class MatchingOrchestrator:
         """
         ranked_candidates, _ = ComparativeScorer.rank_candidates(
             matching_results,
-            base_weight       = base_weight,
-            additional_weight = additional_weight,
-            category_weights  = preferences.to_category_weights() if preferences else None,
+            base_weight      = base_weight,
+            additional_weight= additional_weight,
+            category_weights = preferences.to_category_weights() if preferences else None,
         )
         ranking = self._build_ranking(drive_id, jd_id, ranked_candidates, resumes_folder)
         return {"totalCandidates": len(ranked_candidates), "ranking": ranking}
-
-    # ── kept exactly as before ────────────────────────────────────────────────
 
     def _build_ranking(self, drive_id, jd_id, ranked_candidates, resumes_folder) -> list:
         ranking = []

@@ -77,25 +77,20 @@ async def handle_resumes_matching_completed(event):
     await asyncio.to_thread(
         publish_event, ev.RESUMES_MATCHING_COMPLETED,
         pl.resumes_matching_completed(
-            event.drive_id, event.jd_id, event.total, event.ranking
+            event.drive_id, event.jd_id, event.total, event.succeeded, event.failed
         )
     )
 
-async def handle_resume_matching_started(event):
-    await asyncio.to_thread(
-        publish_event, ev.RESUME_MATCHING_STARTED,
-        pl.resume_matching_started(
-            event.drive_id, event.jd_id, event.resume_id, event.index
-        )
-    )
-
+# ✅ FIX in rabbit_publisher_handlers.py
 async def handle_resume_matching_completed(event):
     await asyncio.to_thread(
         publish_event, ev.RESUME_MATCHING_COMPLETED,
         pl.resume_matching_completed(
             job_id=event.drive_id, jd_id=event.jd_id,
             resume_id=event.resume_id, index=event.index,
+            status=event.status,
             candidate_result=event.candidate_result,
+            error=event.error,
         )
     )
     
@@ -110,5 +105,12 @@ async def handle_resumes_ranking_completed(event):
         publish_event, ev.RESUMES_RANKING_COMPLETED,
         pl.resumes_ranking_completed(
             event.drive_id, event.jd_id, event.total, event.ranking
+        )
+    )
+async def handle_resume_matching_started(event):
+    await asyncio.to_thread(
+        publish_event, ev.RESUME_MATCHING_STARTED,
+        pl.resume_matching_started(
+            event.drive_id, event.jd_id, event.resume_id, event.index
         )
     )

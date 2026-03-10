@@ -104,7 +104,8 @@ class ResumesMatchingCompletedEvent:
     drive_id: str
     jd_id: str
     total: int
-    ranking: list
+    succeeded: int   # ← was ranking: list
+    failed: int      # ← added
 
 
 @dataclass
@@ -123,8 +124,10 @@ class ResumeMatchingCompletedEvent:
     jd_id: str
     resume_id: str
     index: int
-    candidate_result: dict
-    scores_path: str        # where to write scores JSON
+    status: str                          # "success" | "failed"
+    candidate_result: Optional[dict] = None  # present on success
+    scores_path: Optional[str]       = None  # present on success
+    error: Optional[str]             = None  # present on failure
 
 
 # ── Side-effect triggers ──────────────────────────────────────────────────────
@@ -160,3 +163,13 @@ class ResumesRankingCompletedEvent:
     jd_id: str
     total: int
     ranking: list       # final ranked list (same shape as before)
+    
+    
+# ── Debug timing ──────────────────────────────────────────────────────────────
+@dataclass
+class TimingEvent:
+    type: str
+    drive_id: str
+    label: str       # e.g. "JD Parsing" or "resume_1.pdf Parsing" or "resume_1.pdf Matching"
+    started_at: str  # ISO timestamp
+    completed_at: str  # ISO timestamp

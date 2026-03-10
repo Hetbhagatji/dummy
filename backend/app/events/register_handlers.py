@@ -6,13 +6,16 @@ from app.events.events_types import (
     RESUME_PARSING_STARTED, RESUME_PARSING_COMPLETED,
     RESUMES_MATCHING_STARTED, RESUMES_MATCHING_COMPLETED,
     RESUME_MATCHING_STARTED, RESUME_MATCHING_COMPLETED,
-    SUMMARY_UPDATED,RESUMES_RANKING_COMPLETED,RESUMES_RANKING_STARTED
+    SUMMARY_UPDATED,RESUMES_RANKING_COMPLETED,RESUMES_RANKING_STARTED,
+    TIMING_EVENT
+    
 )
 from app.handlers.file_writer_handlers import (
     handle_summary_updated,
     handle_jd_parsing_completed,
     handle_resume_parsing_completed,
-    handle_candidate_ranked
+    handle_candidate_ranked,
+    handle_timing_event
 )
 from app.handlers.rabbit_publisher_handlers import (
     handle_job_started,
@@ -43,6 +46,7 @@ def _register_file_writer() -> None:
     event_bus.subscribe(JD_PARSING_COMPLETED,      handle_jd_parsing_completed)
     event_bus.subscribe(RESUME_PARSING_COMPLETED,  handle_resume_parsing_completed)
     event_bus.subscribe(RESUME_MATCHING_COMPLETED, handle_candidate_ranked)
+    event_bus.subscribe(TIMING_EVENT,              handle_timing_event)
 
 
 def _register_rabbit_publisher() -> None:

@@ -92,20 +92,28 @@ def resume_matching_started(
         "index":    index,
     }
 
+# ✅ FIX in payloads.py
 def resume_matching_completed(
     job_id: str,
     jd_id: str,
     resume_id: str,
     index: int,
-    candidate_result: dict,
+    status: str,
+    candidate_result: dict = None,
+    error: str = None,
 ) -> dict:
-    return {
-        "jobId":           job_id,
-        "jdId":            jd_id,
-        "resumeId":        resume_id,
-        "index":           index,
-        "candidateResult": candidate_result,
+    payload = {
+        "jobId":    job_id,
+        "jdId":     jd_id,
+        "resumeId": resume_id,
+        "index":    index,
+        "status":   status,
     }
+    if status == "success" and candidate_result:
+        payload["candidateResult"] = candidate_result
+    if status == "failed" and error:
+        payload["error"] = error
+    return payload
 
 def resumes_matching_completed(
     job_id: str, jd_id: str,

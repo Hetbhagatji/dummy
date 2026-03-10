@@ -26,3 +26,6 @@ RESUMES_RANKING_COMPLETED  = "RESUMES_RANKING_COMPLETED" # ← NEW
 # ── Side-effect triggers ──────────────────────────────────────────────────────
 SUMMARY_UPDATED   = "SUMMARY_UPDATED"
 JSON_FILE_WRITE   = "JSON_FILE_WRITE"   # generic: write any JSON to disk
+
+# ── Debug timing ──────────────────────────────────────────────────────────────
+TIMING_EVENT = "TIMING_EVENT"
