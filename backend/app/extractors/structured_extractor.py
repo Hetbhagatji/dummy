@@ -17,6 +17,7 @@ from app.utils.clean_json import clean_llm_json
 
 # config = load_config()
 
+
 class StructuredJobExtractor:
     def __init__(self, model_name: str = "llama-3.3-70b-versatile"):
         self.client = get_groq_client()

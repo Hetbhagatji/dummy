@@ -1,0 +1,250 @@
+{
+    "resume_id": "abb55d09-f2c3-4f16-a946-9c5614373487",
+    "personal_info": {
+        "full_name": null,
+        "contact": {
+            "email": null,
+            "phone": null,
+            "linkedin": null,
+            "location": null
+        },
+        "professional_summary": "Senior Machine Learning Engineer with 5+ years of experience in designing, developing, and deploying production-grade AI & GenAI systems at scale."
+    },
+    "education": {
+        "entries": [
+            {
+                "degree_level": "Master's",
+                "degree_name": "Master of Research",
+                "field": [
+                    "Artificial Intelligence",
+                    "Healthcare Technologies"
+                ],
+                "institution": "King's College London",
+                "location": null,
+                "start_date": "2021-09",
+                "end_date": "2022-09",
+                "grade": "Distinction",
+                "achievements": []
+            }
+        ]
+    },
+    "experience": {
+        "experience_areas": [
+            {
+                "job_title": "Senior Machine Learning Engineer",
+                "company_name": "Faculty.ai",
+                "location": {
+                    "city": "London",
+                    "state": null,
+                    "country": null
+                },
+                "employment_type": "Full-Time",
+                "start_date": "2024-12",
+                "end_date": "current",
+                "responsibilities": [
+                    "Architected a production-grade multi-agent LangGraph platform on Azure Kubernetes Service (AKS) that automates KYC work\u01dfows for an international investment bank, cutting manual review time by 70%",
+                    "Designed AgentOps toolkit (guardrails, tracing, of\u01dfine evals, CI/CD via GitLab) enabling weekly releases with one-click rollback and zero-downtime migrations",
+                    "Implemented an event-driven based custom Agent-to-Agent (A2A) protocol with fault-tolerant orchestration (horizontal autoscaling, circuit-breakers) that coordinates 100+ concurrent agents, sustaining peak load and cutting cloud spend 25%",
+                    "Led development of a multi-agent group-life claims-automation system leveraging Azure Document Intelligence and GPT-powered agents to process 1 000+ claims/day with 99.9% SLA compliance",
+                    "Conducted enterprise AI maturity assessments and advised senior leadership on roadmap, driving adoption of secure MLOps best practices across three business units"
+                ],
+                "skills": [],
+                "total_experience_months": 15,
+                "total_experience_years": 1.2,
+                "extracted_keywords": [
+                    "Azure Kubernetes Service",
+                    "LangGraph",
+                    "AgentOps",
+                    "Azure Document Intelligence",
+                    "GPT-powered agents"
+                ]
+            },
+            {
+                "job_title": "Machine Learning Engineer",
+                "company_name": "ASOS.com",
+                "location": {
+                    "city": "London",
+                    "state": null,
+                    "country": null
+                },
+                "employment_type": "Full-Time",
+                "start_date": "2022-09",
+                "end_date": "2024-11",
+                "responsibilities": [
+                    "Built and operated a cloud-native ML & data platform on Azure Databricks, Delta Lake and ML\u01dfow, provisioned via Terraform.",
+                    "Automated notebook work\u01dfows, feature pipelines and model-registry promotion, cutting research to production lead time 40% while serving 200 K+ predictions per month for promotion and clearance decisions",
+                    "Delivered Promotions AI project that automates SKU selection across all customer touchpoints, scaling promotion work\u01dfows to multiple merchandising use cases.",
+                    "Built MLOps for Clearance AI, markdown-price optimiser, computing bi-monthly across multiple regions.",
+                    "Automated ingestion, validation and enrichment for datasets with Delta Lake and PySpark;"
+                ],
+                "skills": [],
+                "total_experience_months": 26,
+                "total_experience_years": 2.2,
+                "extracted_keywords": [
+                    "Azure Databricks",
+                    "Delta Lake",
+                    "ML\u01dfow",
+                    "Terraform",
+                    "Promotions AI",
+                    "Clearance AI"
+                ]
+            },
+            {
+                "job_title": "Machine Learning Engineer",
+                "company_name": "Scienaptic Systems",
+                "location": {
+                    "city": "India",
+                    "state": null,
+                    "country": null
+                },
+                "employment_type": "Full-Time",
+                "start_date": "2020-10",
+                "end_date": "2021-01",
+                "responsibilities": [
+                    "Developed an AI-driven document-processing pipeline that automates credit underwriting;",
+                    "Implemented PDF extraction (PDFMiner, PyPDF2) and Amazon Textract OCR, exposing risk-scoring models via containerised REST microservices on AWS (EC2, S3, SQS, SNS) with auto-scaling and comprehensive observability",
+                    "Instituted enterprise-grade MLOps-model versioning, reproducibility, audit trails-forming a reusable framework leveraged by 6 product teams across the company"
+                ],
+                "skills": [],
+                "total_experience_months": 3,
+                "total_experience_years": 0.2,
+                "extracted_keywords": [
+                    "AI-driven document-processing",
+                    "PDFMiner",
+                    "PyPDF2",
+                    "Amazon Textract OCR",
+                    "AWS"
+                ]
+            },
+            {
+                "job_title": "Arti\u01dccial Intelligence Engineer",
+                "company_name": "Adventum Advanced Solutions",
+                "location": {
+                    "city": "India",
+                    "state": null,
+                    "country": null
+                },
+                "employment_type": "Full-Time",
+                "start_date": "2019-05",
+                "end_date": "2020-09",
+                "responsibilities": [
+                    "Developed the full lifecycle of an AI diagnostics platform for diabetic retinopathy and glaucoma participating in patient-data acquisition, image annotation work\u01dfows, preprocessing pipelines and cloud deployment",
+                    "Curated and quality-controlled ~25 k OCT volumes and fundus photographs stored as DICOM from multi-vendor PACS;",
+                    "Designed, trained and iteratively re\u01dcned custom U-Net and ResNet variants for retinal-\u01dfuid segmentation, layer delineation and anomaly classi\u01dccation;",
+                    "Ran &gt;400 experiment rounds on Databricks and on-prem GPUs using PyTorch and MONAI, applying transfer learning and ensemble techniques;",
+                    "Packaged inference logic as Dockerised Flask microservices on AWS ECS, instrumented with CloudWatch and Prometheus exporters;"
+                ],
+                "skills": [],
+                "total_experience_months": 16,
+                "total_experience_years": 1.3,
+                "extracted_keywords": [
+                    "AI diagnostics platform",
+                    "Diabetic retinopathy",
+                    "Glaucoma",
+                    "Databricks",
+                    "PyTorch",
+                    "MONAI"
+                ]
+            }
+        ]
+    },
+    "skills": {
+        "skills": [
+            {
+                "skill_name": "Python",
+                "category": "Programming Language",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "PyTorch",
+                "category": "Deep Learning Framework",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "TensorFlow",
+                "category": "Deep Learning Framework",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Azure",
+                "category": "Cloud Computing",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "AWS",
+                "category": "Cloud Computing",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Docker",
+                "category": "Containerization",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Kubernetes",
+                "category": "Container Orchestration",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Terraform",
+                "category": "Infrastructure as Code",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "MLOps",
+                "category": "Machine Learning Operations",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Gen AI",
+                "category": "Artificial Intelligence",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Large Language Models",
+                "category": "Natural Language Processing",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Computer Vision",
+                "category": "Computer Vision",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Data Engineering",
+                "category": "Data Engineering",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Software Architecture",
+                "category": "Software Architecture",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Design Patterns",
+                "category": "Software Design",
+                "min_experience_years": null
+            }
+        ],
+        "soft_skills": [
+            "Communication",
+            "Leadership",
+            "Problem-solving",
+            "Teamwork"
+        ]
+    },
+    "certifications": {
+        "entries": []
+    },
+    "raw_text": "<!-- image -->\n\n## Senior Machine Learning Engineer\n\nSenior Machine Learning Engineer with 5+ years of experience in designing, developing, and deploying production-grade AI &amp; GenAI systems at scale. Expertise in leveraging AI frameworks, cloud technologies (Azure, AWS), and MLOps practices for robust product lifecycle management. Proven track record of building end-to-end AI products, optimizing business decisions, and automating processes through cutting-edge AI techniques across the retail, healthcare, \u01dcnance, insurance and banking sectors. Adept at working in cross-functional teams to deliver high-impact AI solutions that drive signi\u01dccant business value.\n\n## SKILLS\n\nGen AI: Large   Language   Models   (  LLM)  , LangChain, LangGraph, AgentOps, Multi-  Agentic   Systems, MCP\n\nSoftware Engineering: Kubernetes, Terraform, Docker, Amazon   Web   Services, Microsoft   Azure, Azure   Data   Factory, Azure Pipelines, Databricks, Delta   Lake, MLFlow, MLOps, Python, PySpark, GitHub   Actions, GitLab   Pipelines, FastAPI, Flask, Data Engineering, Event-  Driven   Architecture, Software   Architecture, Design   Patterns, Testing, Power   BI, SQL, NoSQL   DB, Vector   DB\n\nML &amp; Data Science: PyTorch, TensorFlow, Computer   Vision, CNN, Self-  Supervised   Learning, Medical   Imaging, MONAI, Feature Engineering, Statistical   analysis, Hypothesis   testing, A/  B   testing, Autoencoders, Feature   Store\n\n## WORK EXPERIENCE\n\n## Faculty.ai \u00b7 London Senior Machine Learning Engineer\n\nDec\u00a02024\u00a0- Present\n\n- Architected a production-grade multi-agent LangGraph platform on Azure Kubernetes Service (AKS) that automates KYC work\u01dfows for an international investment bank, cutting manual review time by 70%\n- Designed AgentOps toolkit (guardrails, tracing, of\u01dfine evals, CI/CD via GitLab) enabling weekly releases with one-click rollback and zero-downtime migrations\n- Implemented an event-driven based custom Agent-to-Agent (A2A) protocol with fault-tolerant orchestration (horizontal autoscaling, circuit-breakers) that coordinates 100+ concurrent agents, sustaining peak load and cutting cloud spend 25%\n- Led development of a multi-agent group-life claims-automation system leveraging Azure Document Intelligence and GPT-powered agents to process 1 000+ claims/day with 99.9% SLA compliance\n- Conducted enterprise AI maturity assessments and advised senior leadership on roadmap, driving adoption of secure MLOps best practices across three business units\n\n## ASOS.com \u00b7 London\n\n## Machine Learning Engineer\n\n- Built and operated a cloud-native ML &amp; data platform on Azure Databricks, Delta Lake and ML\u01dfow, provisioned via Terraform. Automated notebook work\u01dfows, feature pipelines and model-registry promotion, cutting research to production lead time 40% while serving 200 K+ predictions per month for promotion and clearance decisions\n- Delivered Promotions AI project that automates SKU selection across all customer touchpoints, scaling promotion work\u01dfows to multiple merchandising use cases. Tight integration with Azure Databricks and the merchandising API enabled data-driven decisions that generated \u00a37.5 M incremental revenue in FY-23 and \u00a32.3 M in FY-24 Q1\n- Built MLOps for Clearance AI, markdown-price optimiser, computing bi-monthly across multiple regions. regional markdowns by fusing demand-elasticity models with stock-age heuristics; streamed dynamic price feeds to merchandising APIs, boosting sell-through 3.6%.\n- Automated ingestion, validation and enrichment for datasets with Delta Lake and PySpark; co-authored reusable transformation and connector libraries that cut new-source onboarding time 60% and materially reduced data-pipeline incidents, giving analysts reliable, timely datasets\n- Standardised MLOps across Promotions AI, Clearance AI and ingestion pipelines: Dockerised inference, uni\u01dced ML\u01dfow lineage, blue-green releases via Azure Pipelines, and an automated A/B test harness that cut experiment turnaround 50%, sustained 99.9% SLA and halved incident MTTR\n\nSep\u00a02022\u00a0- Nov\u00a02024\n\n- Built cookiecutter-based project templates and Databricks job scaffolds, along with playbooks for distributed training on Spark clusters; enabled data scientists to launch new ML experiments in under an hour, standardising best practices and accelerating iteration cycles\n- Created interactive Power BI and Azure-native dashboards that surface KPI impact, data lineage and model health to merchandising, \u01dcnance and engineering teams. Authored technical runbooks and reproducible notebooks to accelerate onboarding and ensure regulatory audit readiness\n\n## Scienaptic Systems \u00b7 India Machine Learning Engineer \u00b7 Full-Time\n\nOct\u00a02020\u00a0- Jan\u00a02021\n\n- Developed an AI-driven document-processing pipeline that automates credit underwriting; delivered \u01dcrst production version in 2 months and adopted by 3 Tier-1 banks, cutting manual review time 35%\n- Implemented PDF extraction (PDFMiner, PyPDF2) and Amazon Textract OCR, exposing risk-scoring models via containerised REST microservices on AWS (EC2, S3, SQS, SNS) with auto-scaling and comprehensive observability\n- Instituted enterprise-grade MLOps-model versioning, reproducibility, audit trails-forming a reusable framework leveraged by 6 product teams across the company\n\n## Adventum Advanced Solutions \u00b7 India Arti\u01dccial Intelligence Engineer \u00b7 Full-Time\n\nMay\u00a02019\u00a0- Sep\u00a02020\n\n- Developed the full lifecycle of an AI diagnostics platform for diabetic retinopathy and glaucoma participating in patient-data acquisition, image annotation work\u01dfows, preprocessing pipelines and cloud deployment gaining hands-on exposure to every stage of regulated medical-AI development in startup environment.\n- Curated and quality-controlled ~25 k OCT volumes and fundus photographs stored as DICOM from multi-vendor PACS; scripted ITK-Snap / 3D Slicer automations that lifted annotation throughput 40% and produced a clean training corpus for downstream models\n- Designed, trained and iteratively re\u01dcned custom U-Net and ResNet variants for retinal-\u01dfuid segmentation, layer delineation and anomaly classi\u01dccation; achieved 93% sensitivity at 95% speci\u01dccity during blinded clinical validation, meeting internal go-to-market thresholds\n- Ran &gt;400 experiment rounds on Databricks and on-prem GPUs using PyTorch and MONAI, applying transfer learning and ensemble techniques; tracked all runs in ML\u01dfow, which enabled reproducible ablation studies and rapid hyper-parameter sweeps\n- Packaged inference logic as Dockerised Flask microservices on AWS ECS, instrumented with CloudWatch and Prometheus exporters; an automated deployment work\u01dfow cut rollout time from weekly to daily and supported clinician-facing web apps\n- Authored real-time monitoring dashboards and slice-level drift alerts that surfaced precision/recall by pathology and scanner type, reducing issue diagnosis time 40% and supporting post-market surveillance obligations\n- Collaborated closely with ophthalmologists, biomedical engineers and full-stack developers-presenting model insights at weekly review boards and co-ordinating small-scale clinical trials\n\n## EDUCATION\n\n## King's College London\n\nMaster of Research in Healthcare Technologies\u00a0in Arti\u01dccial Intelligence \u00b7 GPA: Distinction\n\nSep\u00a02021\u00a0- Sep\u00a02022\n\n- Quantitative Imaging of the Shared Placenta in Twin Pregnancies - built a 3D vessel-segmentation and super-resolution pipeline in MONAI/PyTorch for Twin-to-Twin Transfusion Syndrome surgery planning; reduced manual annotation 60%.\n- Self-Supervised Pre-training for Retinal OCT Fluid Segmentation - cut labelled-data requirements 70% while maintaining &lt;2 \u00b5m mean surface error via contrastive pre-training\n\n## PUBLICATIONS\n\n| Machine learning predicts live-birth occurrence before in-vitro fertilization treatment     | Dec 2020   |\n|---------------------------------------------------------------------------------------------|------------|\n| Nature Scienti\u01dcc Reports                                                                    |            |\n| AI aiding in diagnosing, tracking recovery of COVID-19 using deep learning on Chest CTscans | Nov 2020   |\n| Springer Multimedia Tools And Application                                                   |            |\n| Fingerprint Matching-An Experimental Approach                                               | Jun 2020   |\n| International Journal For Research In Applied Science And Engineering Technology            |            |",
+    "parsed_date": "2026-03-11 16:19:19.726844+00:00",
+    "job_metadata": {
+        "job_title": "Senior Machine Learning Engineer",
+        "industry": "Artificial Intelligence",
+        "employment_type": "Full-Time",
+        "work_mode": null
+    },
+    "industry": "Artificial Intelligence",
+    "job_id": "d145",
+    "resume_name": "abb55d09-f2c3-4f16-a946-9c5614373487"
+}

@@ -1,0 +1,54 @@
+{
+    "candidate_id": "resume_1",
+    "job_id": "full_stack_developer",
+    "matched_at": "2026-03-11 17:21:56.296650",
+    "base_scores": {
+        "skills": 0.224,
+        "experience": 0.0,
+        "education": 0.0,
+        "certifications": 0.0,
+        "responsibilities": 0.0
+    },
+    "excess_metrics": {
+        "education": {
+            "required_degrees": 1,
+            "candidate_degrees": 3,
+            "excess_count": 2,
+            "degree_levels": [
+                "Doctorate",
+                "Master's",
+                "Bachelor's"
+            ]
+        },
+        "skills": {
+            "required_skills_count": 14,
+            "matched_skills_count": 14,
+            "matched_required_count": 3,
+            "missing_required_count": 11,
+            "bonus_skills_count": 11,
+            "excess_count": 0
+        },
+        "experience": {
+            "required_years": 2.0,
+            "candidate_years": 9.399999999999999,
+            "excess_years": 7.399999999999999,
+            "required_areas": 1,
+            "matched_areas": 0,
+            "excess_areas": -1
+        },
+        "certifications": {
+            "required_certs": 1,
+            "candidate_certs": 0,
+            "excess_count": -1,
+            "extra_certs": null
+        }
+    },
+    "additional_scores": null,
+    "category_scores": null,
+    "final_base_score": 0.112,
+    "final_comparative_score": null,
+    "rank": null,
+    "is_qualified": false,
+    "qualification_threshold": 0.7,
+    "matching_preferences": null
+}

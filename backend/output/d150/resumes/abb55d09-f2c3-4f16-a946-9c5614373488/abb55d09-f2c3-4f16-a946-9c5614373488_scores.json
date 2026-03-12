@@ -1,0 +1,52 @@
+{
+    "candidate_id": "abb55d09-f2c3-4f16-a946-9c5614373488",
+    "job_id": "7943ef68-40c7-407a-b41b-f99f7730513e",
+    "matched_at": "2026-03-11 16:33:56.238055",
+    "base_scores": {
+        "skills": 0.049,
+        "experience": 1.0,
+        "education": 1.0,
+        "certifications": 1.0,
+        "responsibilities": 0.471
+    },
+    "excess_metrics": {
+        "education": {
+            "required_degrees": 0,
+            "candidate_degrees": 1,
+            "excess_count": 1,
+            "degree_levels": [
+                "Bachelor's"
+            ]
+        },
+        "skills": {
+            "required_skills_count": 29,
+            "matched_skills_count": 11,
+            "matched_required_count": 3,
+            "missing_required_count": 26,
+            "bonus_skills_count": 8,
+            "excess_count": -18
+        },
+        "experience": {
+            "required_years": 2.0,
+            "candidate_years": 5.7,
+            "excess_years": 3.7,
+            "required_areas": 1,
+            "matched_areas": 1,
+            "excess_areas": 0
+        },
+        "certifications": {
+            "required_certs": 0,
+            "candidate_certs": 19,
+            "excess_count": 19,
+            "extra_certs": null
+        }
+    },
+    "additional_scores": null,
+    "category_scores": null,
+    "final_base_score": 0.498,
+    "final_comparative_score": null,
+    "rank": null,
+    "is_qualified": false,
+    "qualification_threshold": 0.7,
+    "matching_preferences": null
+}

@@ -1,0 +1,220 @@
+{
+    "job_id": "7943ef68-40c7-407a-b41b-f99f7730513e",
+    "job_metadata": {
+        "job_title": "Full Stack Developer (React + Spring Boot)",
+        "industry": null,
+        "employment_type": null,
+        "work_mode": null,
+        "location": [
+            {
+                "city": "Ahmedabad",
+                "state": null,
+                "country": null
+            }
+        ],
+        "experience_required_years": {
+            "min": 2,
+            "max": null
+        },
+        "posted_date": null
+    },
+    "education_requirements": {
+        "groups": [
+            {
+                "group_id": "edu1",
+                "operator": "OR",
+                "min_required": 1,
+                "mandatory": true,
+                "degrees": [
+                    {
+                        "degree_level": "Bachelor's",
+                        "degree_name": "Bachelor of Science",
+                        "degree_category": null,
+                        "fields": [
+                            "Computer Science",
+                            "Information Technology"
+                        ]
+                    },
+                    {
+                        "degree_level": "Bachelor's",
+                        "degree_name": "Bachelor of Technology",
+                        "degree_category": null,
+                        "fields": [
+                            "Computer Science",
+                            "Information Technology"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "skill_requirements": {
+        "groups": [
+            {
+                "group_id": "skill1",
+                "operator": "AND",
+                "min_required": null,
+                "mandatory": true,
+                "skills": [
+                    {
+                        "skill_name": "React",
+                        "category": "Frontend",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Spring Boot",
+                        "category": "Backend",
+                        "min_required": null,
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "HTML",
+                        "category": "Frontend",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "CSS",
+                        "category": "Frontend",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "JavaScript",
+                        "category": "Frontend",
+                        "min_experience_years": null
+                    }
+                ]
+            },
+            {
+                "group_id": "skill2",
+                "operator": "AND",
+                "min_required": null,
+                "mandatory": true,
+                "skills": [
+                    {
+                        "skill_name": "MySQL",
+                        "category": "Database",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "PostgreSQL",
+                        "category": "Database",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "MongoDB",
+                        "category": "Database",
+                        "min_experience_years": null
+                    }
+                ]
+            },
+            {
+                "group_id": "skill3",
+                "operator": "AND",
+                "min_required": null,
+                "mandatory": true,
+                "skills": [
+                    {
+                        "skill_name": "AWS",
+                        "category": "Cloud",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Docker",
+                        "category": "Containerization",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Git",
+                        "category": "Version Control",
+                        "min_experience_years": null
+                    }
+                ]
+            },
+            {
+                "group_id": "skill4",
+                "operator": "AND",
+                "min_required": null,
+                "mandatory": true,
+                "skills": [
+                    {
+                        "skill_name": "JUnit",
+                        "category": "Testing",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Mockito",
+                        "category": "Testing",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Jest",
+                        "category": "Testing",
+                        "min_experience_years": null
+                    }
+                ]
+            }
+        ]
+    },
+    "soft_skill_requirements": {
+        "skills": [
+            "strong problem-solving skills"
+        ]
+    },
+    "certification_requirements": {
+        "groups": [
+            {
+                "group_id": null,
+                "operator": "AND",
+                "min_required": 1,
+                "mandatory": true,
+                "certifications": [
+                    {
+                        "certification_name": "AWS Certified DevOps Engineer",
+                        "issuing_body": null
+                    }
+                ]
+            }
+        ]
+    },
+    "experience_requirements": {
+        "groups": [
+            {
+                "group_id": null,
+                "operator": "AND",
+                "min_required": 1,
+                "mandatory": true,
+                "experiences": [
+                    {
+                        "experience_area": "full stack development",
+                        "min_years": 2.0,
+                        "max_years": null,
+                        "key_technologies": null
+                    }
+                ]
+            }
+        ]
+    },
+    "responsibilities": [
+        "Develop responsive and user-friendly web interfaces using React",
+        "Implement reusable components and maintain clean, modular code",
+        "Integrate frontend applications with backend REST APIs",
+        "Optimize application performance and improve UI/UX",
+        "Debug and resolve frontend issues across browsers and devices",
+        "Design and develop RESTful APIs using Spring Boot",
+        "Implement business logic, validation, and data processing",
+        "Work with relational and/or NoSQL databases",
+        "Ensure application security, scalability, and performance",
+        "Write clean, maintainable, and testable backend code",
+        "Deploy and manage applications on AWS",
+        "Implement CI/CD pipelines and DevOps best practices",
+        "Monitor application performance and handle production issues",
+        "Work with containerization and infrastructure automation tools as required"
+    ],
+    "salary": {
+        "min_amount": null,
+        "max_amount": null,
+        "currency": null,
+        "period": null,
+        "raw_text": "N/A"
+    }
+}

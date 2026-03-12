@@ -15,33 +15,7 @@ from app.services.job_processing.job_processing_service import JobProcessingServ
 # job_service = JobService()
 job_processing_service = JobProcessingService()
 
-# @router.post("/parse-job")
-# def parse_job(job_text: str):
-#     return job_service.parse_job(job_text)
 
-# @router.post("/preparee-job/{job_id}")
-# def process_job(job_id: str):
-#     return job_processing_service.prepare_job(job_id)
-
-
-# @router.post("/prepare-job")
-# def process_job(payload: JobPayload):
-#     return job_processing_service.prepare_job_from_s3(payload)
-
-@router.post("/prepare-job/{driveId}")
-async def submit_job(driveId: str, payload: PrepareJobPayload):
-    """
-    POST /prepare-job/{driveId}
-
-    Step 1 — Parse the JD PDF from S3
-    Step 2 — Parse all resume PDFs from S3 (one by one, synchronously)
-
-    Returns a combined result with JD parsing status + per-resume results.
-    """
-    result = await job_processing_service.submit_job(
-        drive_id=driveId, payload=payload
-    )
-    return result
 
 @router.post("/submit-job/{drive_id}")
 async def submit_job(drive_id: str, payload: PrepareJobPayload):

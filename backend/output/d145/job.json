@@ -1,0 +1,192 @@
+{
+    "job_id": "7943ef68-40c7-407a-b41b-f99f7730513e",
+    "job_metadata": {
+        "job_title": "AI Engineer",
+        "industry": null,
+        "employment_type": null,
+        "work_mode": null,
+        "location": null,
+        "experience_required_years": {
+            "min": 2,
+            "max": 3
+        },
+        "posted_date": null
+    },
+    "education_requirements": null,
+    "skill_requirements": {
+        "groups": [
+            {
+                "group_id": "skill1",
+                "operator": "AND",
+                "min_required": null,
+                "mandatory": true,
+                "skills": [
+                    {
+                        "skill_name": "AI/ML",
+                        "category": "Machine Learning",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "ML frameworks",
+                        "category": "Machine Learning",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "TensorFlow",
+                        "category": "Machine Learning",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "PyTorch",
+                        "category": "Machine Learning",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "NLP",
+                        "category": "Natural Language Processing",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Predictive analytics",
+                        "category": "Data Science",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Automation",
+                        "category": "Automation",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Anomaly detection",
+                        "category": "Data Science",
+                        "min_experience_years": null
+                    }
+                ]
+            },
+            {
+                "group_id": "skill2",
+                "operator": "OR",
+                "min_required": null,
+                "mandatory": false,
+                "skills": [
+                    {
+                        "skill_name": "AWS",
+                        "category": "Cloud Computing",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Azure",
+                        "category": "Cloud Computing",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "GCP",
+                        "category": "Cloud Computing",
+                        "min_experience_years": null
+                    }
+                ]
+            },
+            {
+                "group_id": "skill3",
+                "operator": "AND",
+                "min_required": null,
+                "mandatory": true,
+                "skills": [
+                    {
+                        "skill_name": "SQL",
+                        "category": "Database Management",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Data processing tools",
+                        "category": "Data Science",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Data engineering tools",
+                        "category": "Data Engineering",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Spark",
+                        "category": "Data Engineering",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Airflow",
+                        "category": "Data Engineering",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "Databricks",
+                        "category": "Data Engineering",
+                        "min_experience_years": null
+                    }
+                ]
+            },
+            {
+                "group_id": "skill4",
+                "operator": "OR",
+                "min_required": null,
+                "mandatory": false,
+                "skills": [
+                    {
+                        "skill_name": "Docker",
+                        "category": "Containerization",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "CI/CD pipelines",
+                        "category": "DevOps",
+                        "min_experience_years": null
+                    },
+                    {
+                        "skill_name": "MLOps tools",
+                        "category": "Machine Learning",
+                        "min_experience_years": null
+                    }
+                ]
+            }
+        ]
+    },
+    "soft_skill_requirements": {
+        "skills": []
+    },
+    "certification_requirements": {
+        "groups": []
+    },
+    "experience_requirements": {
+        "groups": [
+            {
+                "group_id": null,
+                "operator": "AND",
+                "min_required": 1,
+                "mandatory": true,
+                "experiences": [
+                    {
+                        "experience_area": "AI/ML engineering or data science roles",
+                        "min_years": 2.0,
+                        "max_years": 3.0,
+                        "key_technologies": null
+                    }
+                ]
+            }
+        ]
+    },
+    "responsibilities": [
+        "Design, develop, and deploy AI/ML models for operational and data-driven use cases.",
+        "Work on end-to-end ML pipelines, including data ingestion, preprocessing, model training, evaluation, and deployment.",
+        "Implement Applied AI solutions (e.g., NLP, predictive analytics, automation, anomaly detection) aligned with business needs.",
+        "Collaborate with data engineers, product teams, and domain experts to translate requirements into scalable AI solutions.",
+        "Optimise model performance, scalability, and reliability in production environments",
+        "Document models, workflows, and technical designs clearly",
+        "Stay updated with emerging AI/ML techniques and recommend practical adoption"
+    ],
+    "salary": {
+        "min_amount": null,
+        "max_amount": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null
+    }
+}

@@ -1,0 +1,208 @@
+{
+    "resume_id": "resume_4",
+    "personal_info": {
+        "full_name": "Stjepan Antunovic",
+        "contact": {
+            "email": "s.antuonovic@email.com",
+            "phone": "(123) 456-7890",
+            "linkedin": null,
+            "location": {
+                "city": "San Francisco",
+                "state": "CA",
+                "country": null
+            }
+        },
+        "professional_summary": null
+    },
+    "education": {
+        "entries": [
+            {
+                "degree_level": "Bachelor's",
+                "degree_name": "Bachelor of Science",
+                "field": [
+                    "Computer Engineering"
+                ],
+                "institution": "San Francisco State University",
+                "location": {
+                    "city": "San Francisco",
+                    "state": "CA",
+                    "country": null
+                },
+                "start_date": "2005-01",
+                "end_date": "2009-01",
+                "grade": null,
+                "achievements": []
+            }
+        ]
+    },
+    "experience": {
+        "experience_areas": [
+            {
+                "job_title": "Full Stack Developer",
+                "company_name": "Oracle",
+                "location": {
+                    "city": "Redwood City",
+                    "state": "CA",
+                    "country": null
+                },
+                "employment_type": null,
+                "start_date": "2017-07",
+                "end_date": "current",
+                "responsibilities": [
+                    "Developed 26 web apps for multiple clients, providing a wide range of functionality and tools enabling mission-critical processes",
+                    "Provided priority one customer support for incidents and bug fixes, maintaining a 99% SLA for response and resolution times",
+                    "Implemented dependency injection for over 200 modules in C# and Angular code"
+                ],
+                "skills": [],
+                "total_experience_months": 104,
+                "total_experience_years": 8.7,
+                "extracted_keywords": [
+                    "web apps",
+                    "customer support",
+                    "dependency injection",
+                    "C#",
+                    "Angular"
+                ]
+            },
+            {
+                "job_title": "Full Stack Web Developer",
+                "company_name": "Pinnacle Technical Resources",
+                "location": {
+                    "city": "San Francisco",
+                    "state": "CA",
+                    "country": null
+                },
+                "employment_type": null,
+                "start_date": "2014-10",
+                "end_date": "2017-06",
+                "responsibilities": [
+                    "Oversaw DevOps for 4 modules - Security, Performance Measurements, Benefits Profiles - using JAZN, J2EE, and ESS",
+                    "Resolved over 250 critical software bugs to resolve issues and improve performance to ensure ongoing operations",
+                    "Implemented 34 Test Driven Deployments (TDD) using Rspec and Jasmine spec runner for unit and functional testing"
+                ],
+                "skills": [],
+                "total_experience_months": 32,
+                "total_experience_years": 2.7,
+                "extracted_keywords": [
+                    "DevOps",
+                    "JAZN",
+                    "J2EE",
+                    "ESS",
+                    "TDD",
+                    "Rspec",
+                    "Jasmine"
+                ]
+            },
+            {
+                "job_title": "Junior Full Stack Developer",
+                "company_name": "Kensuite",
+                "location": {
+                    "city": "San Francisco",
+                    "state": "CA",
+                    "country": null
+                },
+                "employment_type": null,
+                "start_date": "2009-07",
+                "end_date": "2014-08",
+                "responsibilities": [
+                    "Created over 110 programs leveraging proficiency with HTML5, CSS3, and JavaScript (including ECMAScript)",
+                    "Supported 78 implementations of UI/UX styling frameworks including Bootstrap, Foundation, and Semantic UI",
+                    "Developed 123 modules using NodeJS and MeteorJS development frameworks"
+                ],
+                "skills": [],
+                "total_experience_months": 61,
+                "total_experience_years": 5.1,
+                "extracted_keywords": [
+                    "HTML5",
+                    "CSS3",
+                    "JavaScript",
+                    "ECMAScript",
+                    "UI/UX",
+                    "Bootstrap",
+                    "Foundation",
+                    "Semantic UI",
+                    "NodeJS",
+                    "MeteorJS"
+                ]
+            }
+        ]
+    },
+    "skills": {
+        "skills": [
+            {
+                "skill_name": "Web Development",
+                "category": "Technical",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "LAMP",
+                "category": "Technical",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "MEAN",
+                "category": "Technical",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "MySQL",
+                "category": "Technical",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Oracle",
+                "category": "Technical",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "HTML",
+                "category": "Technical",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "CSS",
+                "category": "Technical",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "JavaScript",
+                "category": "Technical",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Angular JS",
+                "category": "Technical",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "React",
+                "category": "Technical",
+                "min_experience_years": null
+            }
+        ],
+        "soft_skills": null
+    },
+    "certifications": {
+        "entries": [
+            {
+                "certification_name": "Full Stack Web Development with React Certification",
+                "issuing_body": null
+            },
+            {
+                "certification_name": "AWS Certified DevOps Engineer - Professional",
+                "issuing_body": "AWS"
+            }
+        ]
+    },
+    "raw_text": "## Stjepan Antunovic\n\n## Full Stack Application Developer\n\ns.antuonovic@email.com\n\n## WORK EXPERIENCE\n\n## Oracle - Full Stack Developer\n\nJuly 2017 - current\n\nRedwood City, CA\n\nRedwood City, CA\n\n- Developed 26 web apps for multiple clients, providing a wide range of functionality and tools enabling mission-critical processes\n- Provided priority one customer support for incidents and bug fixes, maintaining a 99% SLA for response and resolution times\n- Implemented dependency injection for over 200 modules in C# and Angular code\n\n## Pinnacle Technical Resources - Full Stack Web Developer\n\nOctober 2014 - June 2017\n\nSan Francisco, CA\n\n- Oversaw DevOps for 4 modules - Security, Performance Measurements, Benefits Profiles - using JAZN, J2EE, and ESS\n- Resolved over 250 critical software bugs to resolve issues and improve performance to ensure ongoing operations\n- Implemented 34 Test Driven Deployments (TDD) using Rspec and Jasmine spec runner for unit and functional testing\n\n## Kensuite - Junior Full Stack Developer\n\nJuly 2009 - August 2014\n\nSan Francisco, CA\n\n- Created over 110 programs leveraging proficiency with HTML5, CSS3, and JavaScript (including ECMAScript)\n- Supported 78 implementations of UI/UX styling frameworks including Bootstrap, Foundation, and Semantic UI\n- Developed 123 modules using NodeJS and MeteorJS development frameworks\n\n## EDUCATION\n\n## San Francisco State University - Bachelor of Science, Computer Engineering\n\n2005 - 2009\n\n## SKILLS\n\nWeb Development Stacks (LAMP, MEAN); Database Technology (MySQL, Oracle); ElastiCubes and In-Chip Analytics; HTML and CSS; JavaScript and JS Frameworks (Angular JS, React)\n\n## CERTIFICATIONS\n\n- Full Stack Web Development with React Certification\n- AWS Certified DevOps Engineer - Professional\n\nSan Francisco, CA\n\n(123) 456-7890",
+    "parsed_date": "2026-03-11 16:57:16.358738+00:00",
+    "job_metadata": {
+        "job_title": null,
+        "industry": "Information Technology",
+        "employment_type": null,
+        "work_mode": null
+    },
+    "industry": "Information Technology",
+    "job_id": "d150",
+    "resume_name": "resume_4"
+}

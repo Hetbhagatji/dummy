@@ -1,0 +1,173 @@
+{
+    "resume_id": "resume_3",
+    "personal_info": {
+        "full_name": "Harper Chang",
+        "contact": {
+            "email": "h.chang@email.com",
+            "phone": "(123) 456-7890",
+            "linkedin": "LinkedIn",
+            "location": {
+                "city": "Seattle",
+                "state": "WA",
+                "country": null
+            }
+        },
+        "professional_summary": null
+    },
+    "education": {
+        "entries": [
+            {
+                "degree_level": "Bachelor's",
+                "degree_name": "Bachelor of Science",
+                "field": [
+                    "Computer Science and Engineering"
+                ],
+                "institution": "University of Washington",
+                "location": {
+                    "city": "Seattle",
+                    "state": "WA",
+                    "country": null
+                },
+                "start_date": "2011-01",
+                "end_date": "2015-01",
+                "grade": null,
+                "achievements": []
+            }
+        ]
+    },
+    "experience": {
+        "experience_areas": [
+            {
+                "job_title": ".NET Full Stack Developer",
+                "company_name": "Nordstrom",
+                "location": {
+                    "city": "Seattle",
+                    "state": "WA",
+                    "country": null
+                },
+                "employment_type": null,
+                "start_date": "2020-01",
+                "end_date": "current",
+                "responsibilities": [
+                    "Developed and maintained 7 scalable web applications using ASP.NET MVC, enhancing user experience on Nordstorm's mobile application by 27% according to feedback reviews.",
+                    "Implemented data backup and disaster recovery processes using Microsoft SQL Server, lowering data loss risks by 94%.",
+                    "Conducted weekly code reviews, ensuring complete system reliability and helping the team find 62% more bugs on the main website.",
+                    "Optimized Nordstorm's main server performance, cutting down server load time by 45 ms."
+                ],
+                "skills": [],
+                "total_experience_months": 74,
+                "total_experience_years": 6.2,
+                "extracted_keywords": [
+                    "ASP.NET MVC",
+                    "Microsoft SQL Server",
+                    "code reviews",
+                    "server performance"
+                ]
+            },
+            {
+                "job_title": "Intermediate Full Stack Developer",
+                "company_name": "Tableau Software",
+                "location": {
+                    "city": "Seattle",
+                    "state": "WA",
+                    "country": null
+                },
+                "employment_type": null,
+                "start_date": "2017-01",
+                "end_date": "2020-01",
+                "responsibilities": [
+                    "Mentored 6 interns in a full-stack project, increasing the output of each intern by 29%.",
+                    "Managed version control for 6 projects using Git, ensuring smooth collaboration across both front-end and back-end developing teams, and minimizing merge conflicts by 31%.",
+                    "Redesigned the user interface of Tableau's official website using HTML5, boosting first week's site traffic by 12%.",
+                    "Conducted comprehensive unit testing with MSTest on 17 code lines for 8 applications, reducing bug occurrence in each application by 42%."
+                ],
+                "skills": [],
+                "total_experience_months": 36,
+                "total_experience_years": 3.0,
+                "extracted_keywords": [
+                    "Git",
+                    "HTML5",
+                    "MSTest",
+                    "unit testing"
+                ]
+            },
+            {
+                "job_title": "Junior Full Stack Developer",
+                "company_name": "F5 Networks",
+                "location": {
+                    "city": "Seattle",
+                    "state": "WA",
+                    "country": null
+                },
+                "employment_type": null,
+                "start_date": "2015-01",
+                "end_date": "2017-01",
+                "responsibilities": [
+                    "Leveraged RESTful services using ASP.NET Web API, leading to a 24% increase in data processing speed.",
+                    "Used Microsoft Azure cloud services for 3 large-scale projects at F5 Networks, achieving a 96.7% uptime on all small to mid-sized servers.",
+                    "Authored 381 lines of C# code, improving performance for the F5 Access mobile application by 19%."
+                ],
+                "skills": [],
+                "total_experience_months": 24,
+                "total_experience_years": 2.0,
+                "extracted_keywords": [
+                    "ASP.NET Web API",
+                    "Microsoft Azure",
+                    "C#"
+                ]
+            }
+        ]
+    },
+    "skills": {
+        "skills": [
+            {
+                "skill_name": "Visual Studio",
+                "category": "Development Tool",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Git",
+                "category": "Version Control",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Docker",
+                "category": "Containerization",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "Microsoft Azure",
+                "category": "Cloud Computing",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "C#",
+                "category": "Programming Language",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "HTML5",
+                "category": "Markup Language",
+                "min_experience_years": null
+            },
+            {
+                "skill_name": "MSTest",
+                "category": "Testing Framework",
+                "min_experience_years": null
+            }
+        ],
+        "soft_skills": null
+    },
+    "certifications": null,
+    "raw_text": "## Harper Chang\n\n## .net Full Stack Developer\n\n## WORK EXPERIENCE\n\n## Nordstrom\n\n.NET Full Stack Developer\n\nSeattle, WA\n\n| 2020 - current\n\n- Developed and maintained 7 scalable web applications using ASP.NET MVC, enhancing user experience on Nordstorm's mobile application by 27% according to feedback reviews .\n- Implemented data backup and disaster recovery processes using Microsoft SQL Server, lowering data loss risks by 94%.\n- Conducted weekly code reviews, ensuring complete system reliability and helping the team find 62% more bugs on the main website.\n- Optimized Nordstorm's main server performance, cutting down server load time by 45 ms.\n\n## Tableau Software\n\nIntermediate Full Stack Developer Seattle, WA | 2017 - 2020\n\n- Mentored 6 interns in a full-stack project, increasing the output of each intern by 29%.\n- Managed version control for 6 projects using Git, ensuring smooth collaboration across both front-end and back-end developing teams, and minimizing merge conflicts by 31% .\n- Redesigned the user interface of Tableau's official website using HTML5, boosting first week's site traffic by 12%.\n- Conducted comprehensive unit testing with MSTest on 17 code lines for 8 applications, reducing bug occurrence in each application by 42%.\n\n## F5 Networks\n\nJunior Full Stack Developer Seattle, WA | 2015 - 2017\n\n- Leveraged RESTful services using ASP.NET Web API, leading to a 24% increase in data processing speed.\n- Used Microsoft Azure cloud services for 3 large-scale projects at F5 Networks, achieving a 96.7% uptime on all small to mid-sized servers.\n- Authored 381 lines of C# code, improving performance for the F5 Access mobile application by 19% .\n\nh.chang@email.com\n\n(123) 456-7890 Seattle, WA LinkedIn\n\n## SKILLS\n\n- Visual Studio\n- Git\n- Docker\n- Microsoft Azure\n- C#\n- HTML5\n- MSTest\n\n## EDUCATION\n\nBachelor of Science Computer Science and\n\nEngineering\n\nUniversity of Washington 2011 - 2015\n\nSeattle, WA",
+    "parsed_date": "2026-03-11 16:56:46.003042+00:00",
+    "job_metadata": {
+        "job_title": ".net Full Stack Developer",
+        "industry": "Information Technology",
+        "employment_type": null,
+        "work_mode": null
+    },
+    "industry": "Information Technology",
+    "job_id": "d150",
+    "resume_name": "resume_3"
+}
