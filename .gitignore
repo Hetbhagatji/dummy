@@ -9,3 +9,4 @@ testing_3/
 output/
 *.pdf
 *.json
+localstack-data/
