@@ -7,3 +7,5 @@ testing/
 testing_2/
 testing_3/
 output/
+*.pdf
+*.json
