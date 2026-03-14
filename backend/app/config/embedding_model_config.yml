@@ -1,0 +1,2 @@
+# config.yaml
+embedding_model: "all-MiniLM-L6-v2"

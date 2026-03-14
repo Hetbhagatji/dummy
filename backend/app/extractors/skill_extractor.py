@@ -7,8 +7,20 @@ from app.prompts.skill_prompt import get_skill_parsing_prompt
 from app.utils.clean_json import clean_llm_json
 
 
+import yaml
+from pathlib import Path
+CONFIG_PATH = Path(__file__).resolve().parent.parent / "config" / "llm_config.yml"
+
+def load_config():
+    with open(CONFIG_PATH, "r") as f:
+        return yaml.safe_load(f)
+
+config = load_config()
+
+MODEL_NAME = config["llamma_model"]
+
 class SkillExtractor:
-    def __init__(self, model_name: str = "llama-3.3-70b-versatile"):
+    def __init__(self, model_name: str = MODEL_NAME):
         self.client = get_groq_client()
         self.model_name = model_name
 

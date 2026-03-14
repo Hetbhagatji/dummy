@@ -6,6 +6,17 @@ from app.llm_models.client import get_groq_client
 from app.prompts.raw_schema_prompt import get_raw_extraction_prompt
 from app.schemas.raw_schemas import RawJobData
 
+import yaml
+from pathlib import Path
+CONFIG_PATH = Path(__file__).resolve().parent.parent / "config" / "llm_config.yml"
+
+def load_config():
+    with open(CONFIG_PATH, "r") as f:
+        return yaml.safe_load(f)
+
+config = load_config()
+
+MODEL_NAME = config["llamma_model"]
 
 def clean_llm_json(content: str) -> str:
     """
@@ -27,7 +38,7 @@ def clean_llm_json(content: str) -> str:
 
 
 class RawJobExtractor:
-    def __init__(self, model_name: str = "llama-3.3-70b-versatile"):
+    def __init__(self, model_name: str = MODEL_NAME):
         self.client = get_groq_client()
         self.model_name = model_name
 

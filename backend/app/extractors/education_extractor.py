@@ -6,9 +6,19 @@ from app.schemas.raw_schemas import RawJobData
 from app.prompts.education_prompt import get_education_parsing_prompt
 from app.schemas.education_schema import EDUCATION_SCHEMA
 from app.utils.clean_json import clean_llm_json
+import yaml
+from pathlib import Path
+CONFIG_PATH = Path(__file__).resolve().parent.parent / "config" / "llm_config.yml"
+
+def load_config():
+    with open(CONFIG_PATH, "r") as f:
+        return yaml.safe_load(f)
+
+config = load_config()
+
+MODEL_NAME = config["llamma_model"]
 
 
-MODEL_NAME = "llama-3.3-70b-versatile"
 
 
 def run_education_parser(job_description: str):
