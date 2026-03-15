@@ -424,7 +424,7 @@ class JobProcessingService:
             raise HTTPException(status_code=404, detail="Job not found.")
 
         if flag == 0:
-            raise HTTPException(status_code=409, detail="Process is Ongoing.")
+            raise HTTPException(status_code=202, detail="Job accepted and processing")
 
         if flag == -1:
             raise HTTPException(status_code=500, detail="Job failed. Check logs.")
