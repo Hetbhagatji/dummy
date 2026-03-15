@@ -2,30 +2,27 @@
 
 A FastAPI-based application for extracting and analyzing resume details using Grok AI.
 
-
 ## Prerequisites
 
 - Python 3.8+
 - Git
 - Grok API Key
+- Docker & Docker Compose (optional)
 
 ## Installation & Setup
 
 ### 1. Clone the Repository
-
 ```bash
 git clone https://github.com/yourusername/job-resume-matching-grokapi.git
 cd job-resume-matching-grokapi
 ```
 
 ### 2. Navigate to Backend Folder
-
 ```bash
 cd backend
 ```
 
 ### 3. Create Virtual Environment
-
 ```bash
 # Create virtual environment
 python -m venv venv
@@ -39,7 +36,6 @@ source venv/bin/activate
 ```
 
 ### 4. Install Dependencies
-
 ```bash
 pip install -r requirements.txt
 ```
@@ -47,25 +43,51 @@ pip install -r requirements.txt
 ### 5. Configure Environment Variables
 
 Create a `.env` file in the `backend` folder:
-
 ```bash
-# Create .env file
 touch .env
 ```
 
 Add your Grok API key to the `.env` file:
-
 ```env
 GROK_API_KEY=your_grok_api_key_here
 ```
 
 ### 6. Run the Application
-
 ```bash
 uvicorn app.main:app --reload
 ```
 
 The application will start on `http://localhost:8000`
+
+---
+
+## 🐳 Docker Setup (Alternative)
+
+### 1. Configure Environment Variables
+
+Create a `.env` file in the `backend` folder (same as Step 5 above):
+```env
+GROK_API_KEY=your_grok_api_key_here
+```
+
+### 2. Build and Start with Docker Compose
+```bash
+docker-compose up --build
+```
+
+To run in detached (background) mode:
+```bash
+docker-compose up --build -d
+```
+
+### 3. Stop the Containers
+```bash
+docker-compose down
+```
+
+The application will be available at `http://localhost:8000`
+
+---
 
 ## API Documentation
 
@@ -75,7 +97,6 @@ Once the server is running, access the interactive API documentation at:
 - **ReDoc**: http://localhost:8000/redoc
 
 ## Project Structure
-
 ```
 job-resume-matching-grokapi/
 ├── backend/
@@ -86,10 +107,9 @@ job-resume-matching-grokapi/
 │   ├── requirements.txt
 │   ├── .env
 │   └── venv/
+├── docker-compose.yml
 └── README.md
 ```
-
-
 
 ## Troubleshooting
 
@@ -101,6 +121,9 @@ job-resume-matching-grokapi/
 
 **Issue**: Grok API authentication error
 - **Solution**: Verify your `GROK_API_KEY` in the `.env` file
+
+**Issue**: Docker container not starting
+- **Solution**: Make sure Docker Desktop is running and the `.env` file exists with a valid `GROK_API_KEY`
 
 ## Contributing
 
@@ -116,4 +139,4 @@ For questions or support, please open an issue on GitHub.
 
 ---
 
-Made with  using FastAPI and Grok AI
+Made with ❤️ using FastAPI and Grok AI
