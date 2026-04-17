@@ -21,3 +21,4 @@ localstack
 boto3
 pdfplumber
 pika
+transformers
